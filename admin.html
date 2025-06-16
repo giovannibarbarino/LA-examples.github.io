@@ -226,11 +226,32 @@ function scrollToBottom() {
 
 </script>
 
-<!-- Pulsanti scroll -->
-<div id="scrollButtons" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 8px;">
-  <button onclick="scrollToTop()" style="padding:8px 12px; font-size:14px; cursor:pointer;">↑ Inizio</button>
-  <button onclick="scrollToBottom()" style="padding:8px 12px; font-size:14px; cursor:pointer;">↓ Fine</button>
+<!-- Pulsanti scroll circolari -->
+<div id="scrollButtons" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 12px;">
+  <button onclick="scrollToTop()" aria-label="Vai all'inizio" 
+    style="
+      width: 48px; height: 48px; border-radius: 50%; background-color: #007bff; border: none; 
+      color: white; font-size: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    "
+    onmouseenter="this.style.backgroundColor='#0056b3'"
+    onmouseleave="this.style.backgroundColor='#007bff'">
+    ▲
+  </button>
+  <button onclick="scrollToBottom()" aria-label="Vai alla fine" 
+    style="
+      width: 48px; height: 48px; border-radius: 50%; background-color: #007bff; border: none; 
+      color: white; font-size: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    "
+    onmouseenter="this.style.backgroundColor='#0056b3'"
+    onmouseleave="this.style.backgroundColor='#007bff'">
+    ▼
+  </button>
 </div>
+
 
     
 </body>
