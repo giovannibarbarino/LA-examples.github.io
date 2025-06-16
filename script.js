@@ -13,10 +13,11 @@ fetch("https://giovannibarbarino.github.io/LA-examples.github.io/data/database.j
     console.error("Errore nel caricamento del database:", error);
   });
 
-
+/*
 function salvaDatabase() {
   localStorage.setItem("database", JSON.stringify(database));
 }
+*/
 
 function cercaOggetti() {
   const inclusi = document.getElementById("tagInput").value.toLowerCase()
@@ -35,7 +36,7 @@ function cercaOggetti() {
     : "<p>Nessun oggetto trovato.</p>";
 }
 
-
+/*
 function salvaOggetto() {
   const id = document.getElementById("editId").value;
   const nome = document.getElementById("nomeInput").value.trim();
@@ -61,6 +62,7 @@ function salvaOggetto() {
   renderListaOggetti();
 }
 
+
 function modificaOggetto(id) {
   const obj = database.find(o => o.id === id);
   document.getElementById("editId").value = obj.id;
@@ -81,6 +83,7 @@ function resetForm() {
   document.getElementById("nomeInput").value = "";
   document.getElementById("tagsInput").value = "";
 }
+*/
 
 function renderListaOggetti() {
   const container = document.getElementById("listaOggetti");
