@@ -34,7 +34,9 @@ function salvaOggetto() {
 
   if (id) {
     const index = database.findIndex(obj => obj.id == id);
-    database[index] = { id: parseInt(id), nome, tags };
+    if (index !== -1) {
+      database[index] = { id: parseInt(id), nome, tags };
+    }
   } else {
     const newId = Date.now();
     database.push({ id: newId, nome, tags });
