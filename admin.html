@@ -1,87 +1,172 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Admin Database JSON</title>
-<style>
-  body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; }
-  h1 { text-align: center; }
-  .obj { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 6px; }
-  input[type="text"] { width: 100%; padding: 6px; margin: 4px 0 8px 0; box-sizing: border-box; }
-  button { margin: 4px 4px 4px 0; padding: 6px 10px; }
-  .tags { margin-top: -8px; margin-bottom: 10px; font-size: 0.9em; color: #555; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Editor Database JSON</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; }
+    h1, h2 { text-align: center; }
+    .obj { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 6px; }
+    input[type="text"] { width: 100%; margin: 5px 0; padding: 5px; }
+    button { padding: 6px 10px; margin-right: 6px; }
+  </style>
 </head>
 <body>
 
-<h1>Admin - Modifica Database JSON</h1>
+<h1>🔧 Proponi Modifiche al Database</h1>
 
 <div id="listaOggetti"></div>
 
-<h2>Aggiungi nuovo oggetto</h2>
+<h2>➕ Aggiungi nuovo oggetto</h2>
 <div class="obj">
-  <input type="text" id="nuovoNome" placeholder="Nome oggetto" />
-  <input type="text" id="nuoviTags" placeholder="Tags (separati da virgola)" />
+  <input type="text" id="nuovoNome" placeholder="Nome oggetto">
+  <input type="text" id="nuoviTags" placeholder="Tag separati da virgola">
   <button onclick="aggiungiOggetto()">Aggiungi</button>
 </div>
 
-<hr/>
+<hr>
 
-<button onclick="esportaJSON()">⬇️ Esporta JSON Aggiornato</button>
+<button onclick="esportaProposta()">📤 Esporta proposta di modifica</button>
+<button onclick="inviaEmail()">📧 Invia via email</button>
 
 <script>
-  // Inizializza database da localStorage o vuoto
   let database = [];
+  let originalDB = [];
 
-function caricaDatabase() {
-  // Prova a caricare database.json dal sito GitHub Pages
-  fetch("https://giovannibarbarino.github.io/LA-examples.github.io/data/database.json")
-    .then(response => {
-      if (!response.ok) throw new Error("File non trovato o errore rete");
-      return response.json();
-    })
-    .then(data => {
-      database = data;
-      // Sovrascrivi con localStorage se presente
-      const localDb = localStorage.getItem("database");
-      if(localDb) {
-        try {
-          database = JSON.parse(localDb);
-        } catch {
-          // se errore parsing ignora
-        }
-      }
-      renderListaOggetti();
-    })
-    .catch(() => {
-      // Se fetch fallisce, prova da localStorage
-      const localDb = localStorage.getItem("database");
-      if(localDb) {
-        try {
-          database = JSON.parse(localDb);
-        } catch {
-          database = [];
-        }
-      } else {
+  function caricaDatabase() {
+    fetch("https://giovannibarbarino.github.io/LA-examples.github.io/data/database.json")
+      .then(r => r.json())
+      .then(data => {
+        originalDB = JSON.parse(JSON.stringify(data));
+        const local = localStorage.getItem("database");
+        database = local ? JSON.parse(local) : data;
+        renderListaOggetti();
+      })
+      .catch(() => {
+        alert("Errore nel caricamento del database. Verrà usato un database vuoto.");
         database = [];
-      }
-      renderListaOggetti();
-    });
-}
-
-caricaDatabase();
-
-  // Escape HTML (sicurezza base)
-  function escapeHtml(text) {
-    return text.replace(/[&<>"']/g, m => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    })[m]);
+        originalDB = [];
+        renderListaOggetti();
+      });
   }
 
-  // Modifica nome oggetto
+  function renderListaOggetti() {
+    const container = document.getElementById("listaOggetti");
+    if (database.length === 0) {
+      container.innerHTML = "<p>Nessun oggetto presente.</p>";
+      return;
+    }
+    container.innerHTML = database.map(obj => `
+      <div class="obj">
+        <input type="text" value="${obj.nome}" onchange="modificaNome(${obj.id}, this.value)">
+        <input type="text" value="${obj.tags.join(', ')}" onchange="modificaTags(${obj.id}, this.value)">
+        <button onclick="eliminaOggetto(${obj.id})">❌ Elimina</button>
+      </div>
+    `).join("");
+  }
+
   function modificaNome(id, nuovoNome) {
     const index = database.findIndex(o => o.id === id);
     if (index !== -1) {
-      database[index].nome = nuovoNome.trim();
-      salvaDa
+      database[index].nome = nuovoNome;
+      salva();
+    }
+  }
+
+  function modificaTags(id, tagString) {
+    const index = database.findIndex(o => o.id === id);
+    if (index !== -1) {
+      database[index].tags = tagString.split(',').map(t => t.trim()).filter(t => t);
+      salva();
+    }
+  }
+
+  function eliminaOggetto(id) {
+    if (!confirm("Sicuro di voler eliminare?")) return;
+    database = database.filter(o => o.id !== id);
+    salva();
+    renderListaOggetti();
+  }
+
+  function aggiungiOggetto() {
+    const nome = document.getElementById("nuovoNome").value.trim();
+    const tags = document.getElementById("nuoviTags").value.split(",").map(t => t.trim()).filter(Boolean);
+    if (!nome || tags.length === 0) return alert("Inserisci nome e almeno un tag.");
+    const id = Date.now();
+    database.push({ id, nome, tags });
+    salva();
+    document.getElementById("nuovoNome").value = "";
+    document.getElementById("nuoviTags").value = "";
+    renderListaOggetti();
+  }
+
+  function salva() {
+    localStorage.setItem("database", JSON.stringify(database));
+  }
+
+  function esportaProposta() {
+    // JSON modificato
+    const jsonBlob = new Blob([JSON.stringify(database, null, 2)], { type: "application/json" });
+    downloadFile(jsonBlob, "database-modificato.json");
+
+    // changelog
+    const modifiche = generaChangelog(originalDB, database);
+    const txtBlob = new Blob([modifiche], { type: "text/plain" });
+    downloadFile(txtBlob, "modifiche.txt");
+
+    alert("File esportati! Ora puoi inviarli via email.");
+  }
+
+  function inviaEmail() {
+    const subject = encodeURIComponent("Proposta modifica database JSON");
+    const body = encodeURIComponent(`Ciao!\n\nIn allegato trovi i file:\n- database-modificato.json\n- modifiche.txt\n\nGrazie!`);
+    const mailto = `mailto:TUO_EMAIL@esempio.com?subject=${subject}&body=${body}`;
+    window.open(mailto, "_blank");
+  }
+
+  function downloadFile(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function generaChangelog(oldDb, newDb) {
+    const log = [];
+
+    const byId = arr => Object.fromEntries(arr.map(o => [o.id, o]));
+    const oldMap = byId(oldDb);
+    const newMap = byId(newDb);
+
+    for (const id in newMap) {
+      const nuovo = newMap[id];
+      if (!oldMap[id]) {
+        log.push(`➕ Oggetto aggiunto: "${nuovo.nome}" [${nuovo.tags.join(", ")}]`);
+      } else {
+        const vecchio = oldMap[id];
+        if (nuovo.nome !== vecchio.nome) {
+          log.push(`✏️ Nome modificato (id ${id}): "${vecchio.nome}" → "${nuovo.nome}"`);
+        }
+        if (JSON.stringify(nuovo.tags) !== JSON.stringify(vecchio.tags)) {
+          log.push(`✏️ Tag modificati (id ${id}): [${vecchio.tags.join(", ")}] → [${nuovo.tags.join(", ")}]`);
+        }
+      }
+    }
+
+    for (const id in oldMap) {
+      if (!newMap[id]) {
+        log.push(`❌ Oggetto eliminato: "${oldMap[id].nome}"`);
+      }
+    }
+
+    return log.join("\n");
+  }
+
+  caricaDatabase();
+</script>
+
+</body>
+</html>
