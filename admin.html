@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Editor Database JSON</title>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    window.onload = () => {
+      emailjs.init("4pck4wyzmd3xsR73q"); // ← Inserisci qui il tuo USER ID di EmailJS
+    };
+  </script>
   <style>
     body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; }
     h1, h2 { text-align: center; }
@@ -15,20 +21,13 @@
 </head>
 <body>
 
+<!-- GUIDA -->
 <details open style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 6px;">
   <summary style="font-weight: bold; font-size: 1.2em;">📘 Guida: Come proporre modifiche al database</summary>
   <ol>
-    <li>🔍 <strong>Esamina gli oggetti presenti</strong>: Puoi modificare nome o tag direttamente nei campi sotto ogni oggetto.</li>
-    <li>➕ <strong>Aggiungi nuovi oggetti</strong>: Usa la sezione "Aggiungi nuovo oggetto" per inserire un nome e uno o più tag separati da virgole.</li>
-    <li>❌ <strong>Elimina un oggetto</strong>: Clicca su "Elimina" per rimuoverlo.</li>
-    <li>💾 <strong>Le modifiche vengono salvate automaticamente</strong> nel browser.</li>
-    <li>📤 <strong>Esporta la proposta</strong>: Scarica due file:
-      <ul>
-        <li><code>database-modificato.json</code>: Il nuovo database</li>
-        <li><code>modifiche.txt</code>: Elenco dei cambiamenti</li>
-      </ul>
-    </li>
-    <li>📧 <strong>Invia i file via email</strong>: Clicca su "<strong>📧 Invia via email</strong>" e allega i file.</li>
+    <li>Modifica o aggiungi oggetti</li>
+    <li>Esporta i file modificati (opzionale)</li>
+    <li>Invia direttamente via email con un clic</li>
   </ol>
 </details>
 
@@ -47,7 +46,12 @@
 
 <button onclick="esportaProposta()">📤 Esporta proposta di modifica</button>
 <button onclick="inviaEmail()">📧 Invia via email</button>
-<p><em>⚠️ Ricorda: le modifiche non vengono salvate automaticamente sul sito. Devono essere inviate manualmente.</em></p>
+<p><em>⚠️ Le modifiche non vengono salvate nel sito, ma puoi inviarle via email.</em></p>
+
+<!-- Form invisibile per EmailJS -->
+<form id="emailForm" style="display: none;">
+  <textarea name="message" id="emailMessage"></textarea>
+</form>
 
 <script>
   let database = [];
@@ -63,7 +67,7 @@
         renderListaOggetti();
       })
       .catch(() => {
-        alert("Errore nel caricamento del database. Verrà usato un database vuoto.");
+        alert("Errore nel caricamento del database.");
         database = [];
         originalDB = [];
         renderListaOggetti();
@@ -141,14 +145,7 @@
     const txtBlob = new Blob([modifiche], { type: "text/plain" });
     downloadFile(txtBlob, "modifiche.txt");
 
-    alert("File esportati! Ora puoi inviarli via email.");
-  }
-
-  function inviaEmail() {
-    const subject = encodeURIComponent("Proposta modifica database JSON");
-    const body = encodeURIComponent(`Ciao!\n\nIn allegato trovi:\n- database-modificato.json\n- modifiche.txt\n\nGrazie!`);
-    const mailto = `mailto:giovanni.barbarino@gmail.com?subject=${subject}&body=${body}`;
-    window.open(mailto, "_blank");
+    alert("File esportati!");
   }
 
   function downloadFile(blob, filename) {
@@ -189,6 +186,22 @@
     }
 
     return log.join("\n");
+  }
+
+  function inviaEmail() {
+    const jsonStr = JSON.stringify(database, null, 2);
+    const logStr = generaChangelog(originalDB, database);
+    const fullMessage = `=== DATABASE ===\n${jsonStr}\n\n=== MODIFICHE ===\n${logStr}`;
+
+    document.getElementById("emailMessage").value = fullMessage;
+
+    emailjs.sendForm("service_kmh2yna", "template_o0qvp9n", "#emailForm")
+      .then(() => {
+        alert("Email inviata con successo!");
+      }, (err) => {
+        console.error("Errore invio:", err);
+        alert("Errore durante l'invio dell'email.");
+      });
   }
 
   caricaDatabase();
