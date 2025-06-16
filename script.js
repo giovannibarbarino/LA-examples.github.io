@@ -1,3 +1,6 @@
+ // ✅ Cancella ogni versione locale salvata al caricamento
+  localStorage.removeItem("database");
+
 let database = [];
 
 fetch("https://giovannibarbarino.github.io/LA-examples.github.io/data/database.json")
