@@ -92,7 +92,7 @@ function renderListaOggetti() {
   container.innerHTML = database.map(obj => `
     <div class="card">
       <strong>${obj.nome}</strong><br/>
-      Tags: ${obj.tags.join(", ")}<br/>
+      Proprietà: ${obj.tags.join(", ")}<br/>
       <button onclick="modificaOggetto(${obj.id})">✏️ Modifica</button>
       <button onclick="eliminaOggetto(${obj.id})">❌ Elimina</button>
     </div>
