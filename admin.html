@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin Database JSON</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; }
+  h1 { text-align: center; }
+  .obj { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 6px; }
+  input[type="text"] { width: 100%; padding: 6px; margin: 4px 0 8px 0; box-sizing: border-box; }
+  button { margin: 4px 4px 4px 0; padding: 6px 10px; }
+  .tags { margin-top: -8px; margin-bottom: 10px; font-size: 0.9em; color: #555; }
+</style>
+</head>
+<body>
+
+<h1>Admin - Modifica Database JSON</h1>
+
+<div id="listaOggetti"></div>
+
+<h2>Aggiungi nuovo oggetto</h2>
+<div class="obj">
+  <input type="text" id="nuovoNome" placeholder="Nome oggetto" />
+  <input type="text" id="nuoviTags" placeholder="Tags (separati da virgola)" />
+  <button onclick="aggiungiOggetto()">Aggiungi</button>
+</div>
+
+<hr/>
+
+<button onclick="esportaJSON()">⬇️ Esporta JSON Aggiornato</button>
+
+<script>
+  // Inizializza database da localStorage o vuoto
+  let database = JSON.parse(localStorage.getItem("database")) || [
+    { id: 1, nome: "Esempio 1", tags: ["html", "css"] },
+    { id: 2, nome: "Esempio 2", tags: ["javascript"] }
+  ];
+
+  // Render lista oggetti
+  function renderListaOggetti() {
+    const container = document.getElementById("listaOggetti");
+    if (database.length === 0) {
+      container.innerHTML = "<p>Nessun oggetto nel database.</p>";
+      return;
+    }
+    container.innerHTML = database.map(obj => `
+      <div class="obj" data-id="${obj.id}">
+        <input type="text" value="${escapeHtml(obj.nome)}" onchange="modificaNome(${obj.id}, this.value)" />
+        <input type="text" value="${obj.tags.join(", ")}" onchange="modificaTags(${obj.id}, this.value)" />
+        <button onclick="eliminaOggetto(${obj.id})">❌ Elimina</button>
+      </div>
+    `).join("");
+  }
+
+  // Escape HTML (sicurezza base)
+  function escapeHtml(text) {
+    return text.replace(/[&<>"']/g, m => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[m]);
+  }
+
+  // Modifica nome oggetto
+  function modificaNome(id, nuovoNome) {
+    const index = database.findIndex(o => o.id === id);
+    if (index !== -1) {
+      database[index].nome = nuovoNome.trim();
+      salvaDa
