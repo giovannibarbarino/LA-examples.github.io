@@ -1,4 +1,15 @@
-let database = JSON.parse(localStorage.getItem("database")) || [];
+let database = [];
+
+fetch("https://giovannibarbarino.github.io/LA-examples.github.io/data/database.json")
+  .then(response => response.json())
+  .then(data => {
+    database = data;
+    renderListaOggetti();
+  })
+  .catch(error => {
+    console.error("Errore nel caricamento del database:", error);
+  });
+
 
 function salvaDatabase() {
   localStorage.setItem("database", JSON.stringify(database));
