@@ -9,29 +9,28 @@
     h1, h2 { text-align: center; }
     .obj { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 6px; }
     input[type="text"] { width: 100%; margin: 5px 0; padding: 5px; }
-    button { padding: 6px 10px; margin-right: 6px; }
+    button { padding: 6px 10px; margin: 5px 4px 10px 0; }
+    summary { cursor: pointer; }
   </style>
 </head>
 <body>
 
-  <details open style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 6px;">
+<details open style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 6px;">
   <summary style="font-weight: bold; font-size: 1.2em;">📘 Guida: Come proporre modifiche al database</summary>
   <ol>
     <li>🔍 <strong>Esamina gli oggetti presenti</strong>: Puoi modificare nome o tag direttamente nei campi sotto ogni oggetto.</li>
     <li>➕ <strong>Aggiungi nuovi oggetti</strong>: Usa la sezione "Aggiungi nuovo oggetto" per inserire un nome e uno o più tag separati da virgole.</li>
     <li>❌ <strong>Elimina un oggetto</strong>: Clicca su "Elimina" per rimuoverlo.</li>
-    <li>💾 <strong>Le modifiche vengono salvate automaticamente</strong> nel browser (non ancora nel file finale).</li>
-    <li>📤 <strong>Esporta la proposta</strong>: Quando hai finito, clicca su "<strong>📤 Esporta proposta di modifica</strong>". Verranno scaricati due file:
+    <li>💾 <strong>Le modifiche vengono salvate automaticamente</strong> nel browser.</li>
+    <li>📤 <strong>Esporta la proposta</strong>: Scarica due file:
       <ul>
-        <li><code>database-modificato.json</code>: Il nuovo database completo</li>
-        <li><code>modifiche.txt</code>: Elenco dettagliato dei cambiamenti</li>
+        <li><code>database-modificato.json</code>: Il nuovo database</li>
+        <li><code>modifiche.txt</code>: Elenco dei cambiamenti</li>
       </ul>
     </li>
-    <li>📧 <strong>Invia i file via email</strong>: Clicca su "<strong>📧 Invia via email</strong>" per aprire il tuo programma email predefinito.</li>
-    <li>✅ <strong>Allega entrambi i file</strong> e inviali all'indirizzo indicato.</li>
+    <li>📧 <strong>Invia i file via email</strong>: Clicca su "<strong>📧 Invia via email</strong>" e allega i file.</li>
   </ol>
 </details>
-
 
 <h1>🔧 Proponi Modifiche al Database</h1>
 
@@ -48,6 +47,7 @@
 
 <button onclick="esportaProposta()">📤 Esporta proposta di modifica</button>
 <button onclick="inviaEmail()">📧 Invia via email</button>
+<p><em>⚠️ Ricorda: le modifiche non vengono salvate automaticamente sul sito. Devono essere inviate manualmente.</em></p>
 
 <script>
   let database = [];
@@ -120,26 +120,23 @@
     renderListaOggetti();
   }
 
+  function generaProssimoId() {
+    const idsEsistenti = database.map(obj => obj.id);
+    let nuovoId = 1;
+    while (idsEsistenti.includes(nuovoId)) {
+      nuovoId++;
+    }
+    return nuovoId;
+  }
+
   function salva() {
     localStorage.setItem("database", JSON.stringify(database));
   }
 
-  function generaProssimoId() {
-  const idsEsistenti = database.map(obj => obj.id);
-  let nuovoId = 1;
-  while (idsEsistenti.includes(nuovoId)) {
-    nuovoId++;
-  }
-  return nuovoId;
-}
-
-
   function esportaProposta() {
-    // JSON modificato
     const jsonBlob = new Blob([JSON.stringify(database, null, 2)], { type: "application/json" });
     downloadFile(jsonBlob, "database-modificato.json");
 
-    // changelog
     const modifiche = generaChangelog(originalDB, database);
     const txtBlob = new Blob([modifiche], { type: "text/plain" });
     downloadFile(txtBlob, "modifiche.txt");
@@ -149,7 +146,7 @@
 
   function inviaEmail() {
     const subject = encodeURIComponent("Proposta modifica database JSON");
-    const body = encodeURIComponent(`Ciao!\n\nIn allegato trovi i file:\n- database-modificato.json\n- modifiche.txt\n\nGrazie!`);
+    const body = encodeURIComponent(`Ciao!\n\nIn allegato trovi:\n- database-modificato.json\n- modifiche.txt\n\nGrazie!`);
     const mailto = `mailto:giovanni.barbarino@gmail.com?subject=${subject}&body=${body}`;
     window.open(mailto, "_blank");
   }
@@ -173,21 +170,21 @@
     for (const id in newMap) {
       const nuovo = newMap[id];
       if (!oldMap[id]) {
-        log.push(`➕ Oggetto aggiunto: "${nuovo.nome}" [${nuovo.tags.join(", ")}]`);
+        log.push(`➕ Aggiunto: "${nuovo.nome}" [${nuovo.tags.join(", ")}]`);
       } else {
         const vecchio = oldMap[id];
         if (nuovo.nome !== vecchio.nome) {
-          log.push(`✏️ Nome modificato (id ${id}): "${vecchio.nome}" → "${nuovo.nome}"`);
+          log.push(`✏️ Modificato nome (ID ${id}): "${vecchio.nome}" → "${nuovo.nome}"`);
         }
         if (JSON.stringify(nuovo.tags) !== JSON.stringify(vecchio.tags)) {
-          log.push(`✏️ Tag modificati (id ${id}): [${vecchio.tags.join(", ")}] → [${nuovo.tags.join(", ")}]`);
+          log.push(`✏️ Modificati tag (ID ${id}): [${vecchio.tags.join(", ")}] → [${nuovo.tags.join(", ")}]`);
         }
       }
     }
 
     for (const id in oldMap) {
       if (!newMap[id]) {
-        log.push(`❌ Oggetto eliminato: "${oldMap[id].nome}"`);
+        log.push(`❌ Eliminato: "${oldMap[id].nome}"`);
       }
     }
 
