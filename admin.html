@@ -214,7 +214,24 @@
   }
 
   caricaDatabase();
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function scrollToBottom() {
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+
+
 </script>
 
+<!-- Pulsanti scroll -->
+<div id="scrollButtons" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 8px;">
+  <button onclick="scrollToTop()" style="padding:8px 12px; font-size:14px; cursor:pointer;">↑ Inizio</button>
+  <button onclick="scrollToBottom()" style="padding:8px 12px; font-size:14px; cursor:pointer;">↓ Fine</button>
+</div>
+
+    
 </body>
 </html>
