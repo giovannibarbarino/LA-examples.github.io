@@ -54,6 +54,9 @@
 </form>
 
 <script>
+ // ✅ Cancella ogni versione locale salvata al caricamento
+  localStorage.removeItem("database");
+  
   let database = [];
   let originalDB = [];
 
