@@ -3,16 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ricerca per Tag</title>
+  <title>Gestione Oggetti per Tag</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Ricerca oggetti per tag</h1>
+  <h1>Gestione Oggetti</h1>
 
-  <input type="text" id="tagInput" placeholder="Inserisci tag separati da virgola..." />
-  <button onclick="cercaOggetti()">Cerca</button>
+  <section>
+    <h2>🔍 Ricerca</h2>
+    <input type="text" id="tagInput" placeholder="Es: html, css" />
+    <button onclick="cercaOggetti()">Cerca</button>
+    <div id="risultati"></div>
+  </section>
 
-  <div id="risultati"></div>
+  <section>
+    <h2>➕ Aggiungi / ✏️ Modifica</h2>
+    <input type="hidden" id="editId" />
+    <input type="text" id="nomeInput" placeholder="Nome oggetto" />
+    <input type="text" id="tagsInput" placeholder="Tag separati da virgola" />
+    <button onclick="salvaOggetto()">Salva</button>
+  </section>
+
+  <section>
+    <h2>📦 Tutti gli Oggetti</h2>
+    <div id="listaOggetti"></div>
+  </section>
 
   <script src="script.js"></script>
 </body>
