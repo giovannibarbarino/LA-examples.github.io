@@ -93,7 +93,7 @@
     const nome = document.getElementById("nuovoNome").value.trim();
     const tags = document.getElementById("nuoviTags").value.split(",").map(t => t.trim()).filter(Boolean);
     if (!nome || tags.length === 0) return alert("Inserisci nome e almeno un tag.");
-    const id = Date.now();
+    const id = generaProssimoId();
     database.push({ id, nome, tags });
     salva();
     document.getElementById("nuovoNome").value = "";
@@ -104,6 +104,16 @@
   function salva() {
     localStorage.setItem("database", JSON.stringify(database));
   }
+
+  function generaProssimoId() {
+  const idsEsistenti = database.map(obj => obj.id);
+  let nuovoId = 1;
+  while (idsEsistenti.includes(nuovoId)) {
+    nuovoId++;
+  }
+  return nuovoId;
+}
+
 
   function esportaProposta() {
     // JSON modificato
