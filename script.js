@@ -5,11 +5,14 @@ function salvaDatabase() {
 }
 
 function cercaOggetti() {
-  const input = document.getElementById("tagInput").value.toLowerCase();
-  const tagList = input.split(",").map(t => t.trim()).filter(t => t);
+  const inclusi = document.getElementById("tagInput").value.toLowerCase()
+    .split(",").map(t => t.trim()).filter(t => t);
+  const esclusi = document.getElementById("tagEsclusiInput").value.toLowerCase()
+    .split(",").map(t => t.trim()).filter(t => t);
 
   const risultati = database.filter(obj =>
-    tagList.every(tag => obj.tags.includes(tag))
+    inclusi.every(tag => obj.tags.includes(tag)) &&
+    esclusi.every(tag => !obj.tags.includes(tag))
   );
 
   const divRisultati = document.getElementById("risultati");
@@ -17,6 +20,7 @@ function cercaOggetti() {
     ? risultati.map(obj => `<p><strong>${obj.nome}</strong> - Tags: ${obj.tags.join(", ")}</p>`).join("")
     : "<p>Nessun oggetto trovato.</p>";
 }
+
 
 function salvaOggetto() {
   const id = document.getElementById("editId").value;
