@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "nome": "Fourier",
+    "tags": ["unitary", "symmetric"]
+  },
+  {
+    "id": 2,
+    "nome": "Identity",
+    "tags": ["diagonal", "unitary", "symmetric", "binary", "real"]
+  }
+]
