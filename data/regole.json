@@ -42,5 +42,21 @@
         "negato": false
       }
     ]
+  },
+  {
+    "id": 3,
+    "nome": "real is not complex",
+    "se": [
+      {
+        "tag": "real-eigenvalues",
+        "negato": false
+      }
+    ],
+    "allora": [
+      {
+        "tag": "pure-imaginary-eigenvalues",
+        "negato": true
+      }
+    ]
   }
 ]
