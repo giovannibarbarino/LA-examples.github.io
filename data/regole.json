@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "nome": "Teorema Spettrale",
+    "se": [
+      {
+        "tag": "symmetric",
+        "negato": false
+      },
+      {
+        "tag": "real",
+        "negato": false
+      }
+    ],
+    "allora": [
+      {
+        "tag": "diagonalizable",
+        "negato": false
+      },
+      {
+        "tag": "real-eigenvalues",
+        "negato": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nome": "Teorema Spettrale Complesso",
+    "se": [
+      {
+        "tag": "Hermitian",
+        "negato": false
+      }
+    ],
+    "allora": [
+      {
+        "tag": "diagonalizable",
+        "negato": false
+      },
+      {
+        "tag": "real-eigenvalues",
+        "negato": false
+      }
+    ]
+  }
+]
