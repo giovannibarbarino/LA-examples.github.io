@@ -102,3 +102,79 @@ function renderListaOggetti() {
 
 // Avvia
 renderListaOggetti();
+
+let regole = [];
+
+// Carica oggetti
+fetch('data/database.json')
+  .then(res => res.json())
+  .then(data => mostraOggetti(data));
+
+// Carica regole
+fetch('data/regole.json')
+  .then(res => res.json())
+  .then(data => {
+    regole = data;
+    mostraRegole(data);
+  });
+
+// Mostra oggetti
+function mostraOggetti(oggetti) {
+  const div = document.getElementById("listaOggetti");
+  div.innerHTML = oggetti.map(o => `
+    <div><strong>${o.nome}</strong>: ${o.tags.join(', ')}</div>
+  `).join('');
+}
+
+// Mostra regole
+function mostraRegole(regole) {
+  const div = document.getElementById("listaRegole");
+  div.innerHTML = regole.map(r => `
+    <div>
+      <strong>${r.nome}</strong><br/>
+      SE: ${r.se.map(t => t.negato ? "¬" + t.tag : t.tag).join(', ')}<br/>
+      ALLORA: ${r.allora.map(t => t.negato ? "¬" + t.tag : t.tag).join(', ')}
+    </div>
+  `).join('<hr/>');
+}
+
+// Ricerca
+function cercaOggetti() {
+  const inclusi = document.getElementById("tagInput").value
+    .split(',').map(t => t.trim()).filter(t => t);
+  const esclusi = document.getElementById("tagEsclusiInput").value
+    .split(',').map(t => t.trim()).filter(t => t);
+
+  // Verifica violazione regole
+  const violata = regole.find(regola => {
+    return regola.se.every(cond => {
+      return (cond.negato ? esclusi.includes(cond.tag) : inclusi.includes(cond.tag));
+    }) && regola.allora.some(cond => {
+      return (cond.negato ? inclusi.includes(cond.tag) : esclusi.includes(cond.tag));
+    });
+  });
+
+  const risultatiDiv = document.getElementById("risultati");
+
+  if (violata) {
+    risultatiDiv.innerHTML = `
+      ❌ <strong>Ricerca non valida</strong>: la combinazione viola la regola <em>${violata.nome}</em>
+    `;
+    return;
+  }
+
+  // Se non viola, carica e filtra oggetti
+  fetch('data/database.json')
+    .then(res => res.json())
+    .then(oggetti => {
+      const filtrati = oggetti.filter(o => {
+        return inclusi.every(t => o.tags.includes(t)) &&
+               esclusi.every(t => !o.tags.includes(t));
+      });
+
+      risultatiDiv.innerHTML = filtrati.length > 0
+        ? filtrati.map(o => `<div><strong>${o.nome}</strong>: ${o.tags.join(', ')}</div>`).join('')
+        : '🔍 Nessun oggetto trovato.';
+    });
+}
+
