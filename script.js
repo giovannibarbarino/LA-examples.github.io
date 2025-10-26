@@ -8,6 +8,7 @@ fetch("https://giovannibarbarino.github.io/LA-examples.github.io/data/database.j
   .then(data => {
     database = data;
     renderListaOggetti();
+    buildTagSuggestions(data);
   })
   .catch(error => {
     console.error("Errore nel caricamento del database:", error);
@@ -100,6 +101,152 @@ function renderListaOggetti() {
   `).join("");
 }
 
+// Costruisce e popola il <datalist> con tutti i tag unici trovati negli oggetti
+function buildTagSuggestions(oggetti) {
+  try {
+    const set = new Set();
+    oggetti.forEach(o => {
+      if (Array.isArray(o.tags)) {
+        o.tags.forEach(t => set.add(String(t).toLowerCase()));
+      }
+    });
+
+    const datalist = document.getElementById('tagSuggestions');
+    if (!datalist) return;
+    const tags = Array.from(set).sort();
+    // keep a global list for the custom per-token dropdown
+    window.__tagList = tags;
+    datalist.innerHTML = tags.map(t => `<option value="${t}">`).join('');
+  } catch (e) {
+    console.error('Impossibile popolare suggerimenti tag:', e);
+  }
+}
+
+// Initialize multi-token suggestion dropdown for #tagInput
+function initTagInputMultiToken() {
+  const input = document.getElementById('tagInput');
+  const dropdown = document.getElementById('tagDropdown');
+  if (!input || !dropdown) return;
+
+  let selectedIndex = -1;
+  let currentMatches = [];
+
+  function hide() {
+    dropdown.style.display = 'none';
+    selectedIndex = -1;
+    currentMatches = [];
+  }
+
+  function showMatches(matches, rect) {
+    if (!matches || matches.length === 0) { hide(); return; }
+    currentMatches = matches.slice(0, 20);
+    selectedIndex = -1;
+    dropdown.innerHTML = currentMatches.map((m, i) => `<div class="tag-sugg" data-index="${i}" style="padding:6px 8px;cursor:pointer;">${m}</div>`).join('');
+    // position
+    dropdown.style.left = (rect.left + window.scrollX) + 'px';
+    dropdown.style.top = (rect.bottom + window.scrollY) + 'px';
+    dropdown.style.width = rect.width + 'px';
+    dropdown.style.display = 'block';
+  }
+
+  function update() {
+    const caret = input.selectionStart || 0;
+    const value = input.value || '';
+    const before = value.slice(0, caret);
+    const lastComma = before.lastIndexOf(',');
+    const start = lastComma + 1;
+    const tokenRaw = before.slice(start);
+    const token = tokenRaw.replace(/^\s+/, '');
+    const prefix = token.toLowerCase();
+    if (!prefix) { hide(); return; }
+
+    const tags = window.__tagList || [];
+    const matches = tags.filter(t => t.indexOf(prefix) !== -1);
+    if (matches.length === 0) { hide(); return; }
+
+    const rect = input.getBoundingClientRect();
+    showMatches(matches, rect);
+  }
+
+  function acceptSuggestion(sugg) {
+    const caret = input.selectionStart || 0;
+    const value = input.value || '';
+    const before = value.slice(0, caret);
+    const after = value.slice(caret);
+    const lastComma = before.lastIndexOf(',');
+    const start = lastComma + 1;
+    // find end of token (next comma after caret)
+    const nextComma = value.indexOf(',', caret);
+    const end = nextComma === -1 ? value.length : nextComma;
+
+    const left = value.slice(0, start);
+    const right = value.slice(end);
+    // ensure single space after comma if needed
+    const insert = sugg;
+    let newValue = left + insert;
+    // append comma+space if there wasn't one after token
+    if (right.length === 0 || right[0] !== ',') newValue += ', ' + right.trimStart();
+    else newValue += right;
+
+    input.value = newValue;
+
+    // place caret after inserted suggestion + 2 (for ', ')
+    const newPos = left.length + insert.length + 2;
+    input.focus();
+    input.setSelectionRange(newPos, newPos);
+    hide();
+  }
+
+  dropdown.addEventListener('mousedown', (ev) => {
+    // prevent input blur before click
+    ev.preventDefault();
+  });
+
+  dropdown.addEventListener('click', (ev) => {
+    const target = ev.target.closest('.tag-sugg');
+    if (!target) return;
+    const idx = Number(target.dataset.index || 0);
+    const val = currentMatches[idx];
+    if (val) acceptSuggestion(val);
+  });
+
+  input.addEventListener('input', () => update());
+
+  input.addEventListener('keydown', (ev) => {
+    if (dropdown.style.display === 'none') return;
+    const items = dropdown.querySelectorAll('.tag-sugg');
+    if (!items || items.length === 0) return;
+    if (ev.key === 'ArrowDown') {
+      ev.preventDefault();
+      selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+      Array.from(items).forEach((it, i) => it.style.background = i === selectedIndex ? '#eef' : '');
+      return;
+    }
+    if (ev.key === 'ArrowUp') {
+      ev.preventDefault();
+      selectedIndex = Math.max(selectedIndex - 1, 0);
+      Array.from(items).forEach((it, i) => it.style.background = i === selectedIndex ? '#eef' : '');
+      return;
+    }
+    if (ev.key === 'Enter' || ev.key === 'Tab') {
+      if (selectedIndex >= 0 && items[selectedIndex]) {
+        ev.preventDefault();
+        const val = currentMatches[selectedIndex];
+        acceptSuggestion(val);
+      }
+    }
+    if (ev.key === 'Escape') {
+      hide();
+    }
+  });
+
+  // hide on blur (with small delay to allow click)
+  input.addEventListener('blur', () => setTimeout(hide, 150));
+}
+
+// start the multi-token logic (will use window.__tagList when available)
+initTagInputMultiToken();
+
 // Avvia
 renderListaOggetti();
 
@@ -124,6 +271,8 @@ function mostraOggetti(oggetti) {
   div.innerHTML = oggetti.map(o => `
     <div><strong>${o.nome}</strong>: ${o.tags.join(', ')}</div>
   `).join('');
+  // Aggiorna suggerimenti tag anche quando gli oggetti sono caricati qui
+  buildTagSuggestions(oggetti);
 }
 
 // Mostra regole
@@ -140,10 +289,11 @@ function mostraRegole(regole) {
 
 // Ricerca
 function cercaOggetti() {
+  // Normalizza input a lowercase per confronto case-insensitive
   const inclusi = document.getElementById("tagInput").value
-    .split(',').map(t => t.trim()).filter(t => t);
+    .split(',').map(t => t.trim().toLowerCase()).filter(t => t);
   const esclusi = document.getElementById("tagEsclusiInput").value
-    .split(',').map(t => t.trim()).filter(t => t);
+    .split(',').map(t => t.trim().toLowerCase()).filter(t => t);
 
   // Verifica violazione regole
   const violata = regole.find(regola => {
@@ -163,13 +313,14 @@ function cercaOggetti() {
     return;
   }
 
-  // Se non viola, carica e filtra oggetti
+  // Se non viola, carica e filtra oggetti (confronti case-insensitive)
   fetch('data/database.json')
     .then(res => res.json())
     .then(oggetti => {
       const filtrati = oggetti.filter(o => {
-        return inclusi.every(t => o.tags.includes(t)) &&
-               esclusi.every(t => !o.tags.includes(t));
+        const tagsLower = Array.isArray(o.tags) ? o.tags.map(tt => String(tt).toLowerCase()) : [];
+        return inclusi.every(t => tagsLower.includes(t)) &&
+               esclusi.every(t => !tagsLower.includes(t));
       });
 
       risultatiDiv.innerHTML = filtrati.length > 0
