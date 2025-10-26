@@ -37,54 +37,6 @@ function cercaOggetti() {
     : "<p>Nessun oggetto trovato.</p>";
 }
 
-/*
-function salvaOggetto() {
-  const id = document.getElementById("editId").value;
-  const nome = document.getElementById("nomeInput").value.trim();
-  const tags = document.getElementById("tagsInput").value.toLowerCase().split(",").map(t => t.trim()).filter(t => t);
-
-  if (!nome || tags.length === 0) {
-    alert("Inserisci un nome e almeno un tag.");
-    return;
-  }
-
-  if (id) {
-    const index = database.findIndex(obj => obj.id == id);
-    if (index !== -1) {
-      database[index] = { id: parseInt(id), nome, tags };
-    }
-  } else {
-    const newId = Date.now();
-    database.push({ id: newId, nome, tags });
-  }
-
-  salvaDatabase();
-  resetForm();
-  renderListaOggetti();
-}
-
-
-function modificaOggetto(id) {
-  const obj = database.find(o => o.id === id);
-  document.getElementById("editId").value = obj.id;
-  document.getElementById("nomeInput").value = obj.nome;
-  document.getElementById("tagsInput").value = obj.tags.join(", ");
-}
-
-function eliminaOggetto(id) {
-  if (confirm("Vuoi eliminare questo oggetto?")) {
-    database = database.filter(o => o.id !== id);
-    salvaDatabase();
-    renderListaOggetti();
-  }
-}
-
-function resetForm() {
-  document.getElementById("editId").value = "";
-  document.getElementById("nomeInput").value = "";
-  document.getElementById("tagsInput").value = "";
-}
-*/
 
 function renderListaOggetti() {
   const container = document.getElementById("listaOggetti");
@@ -123,9 +75,8 @@ function buildTagSuggestions(oggetti) {
 }
 
 // Initialize multi-token suggestion dropdown for #tagInput
-function initTagInputMultiToken() {
-  const input = document.getElementById('tagInput');
-  const dropdown = document.getElementById('tagDropdown');
+function initTagInputMultiToken(input, dropdown) {
+
   if (!input || !dropdown) return;
 
   let selectedIndex = -1;
@@ -245,7 +196,9 @@ function initTagInputMultiToken() {
 }
 
 // start the multi-token logic (will use window.__tagList when available)
-initTagInputMultiToken();
+initTagInputMultiToken(document.getElementById('tagInput'), document.getElementById('tagDropdown'));
+initTagInputMultiToken(document.getElementById('tagEsclusiInput'), document.getElementById('tagDropdownEsclusi'));
+
 
 // Avvia
 renderListaOggetti();
