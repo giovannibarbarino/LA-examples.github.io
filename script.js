@@ -164,7 +164,11 @@ function initTagInputMultiToken(input, dropdown) {
   input.addEventListener('input', () => update());
 
   input.addEventListener('keydown', (ev) => {
-    if (dropdown.style.display === 'none') return;
+    if (dropdown.style.display === 'none') {
+		update();
+		return;
+	}
+    //return;
     const items = dropdown.querySelectorAll('.tag-sugg');
     if (!items || items.length === 0) return;
     if (ev.key === 'ArrowDown') {

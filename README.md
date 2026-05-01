@@ -75,6 +75,13 @@ The system enforces mathematical theorems and properties through logical rules. 
 
 ## Local Development
 
+Run 
+   ```google-chrome-stable --allow-file-access-from-files
+   ```
+and then open the file index.html   
+
+Alernatively,
+
 1. Clone the repository
 2. Serve the directory using a local HTTP server:
    ```bash
