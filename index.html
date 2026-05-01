@@ -12,8 +12,12 @@ ciao
 
 <br>
 
-<input type="text" id="tagInput" placeholder="Proprietà incluse (es: diagonal, real)"  /><br>
-<input type="text" id="tagExcludedInput" placeholder="Proprietà escluse (es: diagonal, real)"  /><br>
+<input type="text" id="tagInput" list="TagList" placeholder="Proprietà incluse (es: diagonal, real)"  /><br>
+<input type="text" id="tagExcludedInput" list="TagList" placeholder="Proprietà escluse (es: diagonal, real)"  /><br>
+
+
+<datalist id="TagList"></datalist>
+
 
 <button onclick="cercaOggetti()">Cerca</button>
 <div id="risultati"></div>

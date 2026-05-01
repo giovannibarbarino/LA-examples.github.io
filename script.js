@@ -1,6 +1,25 @@
  // ✅ Cancella ogni versione locale salvata al caricamento
   localStorage.removeItem("obj");
 
+
+function populate_tags(obj_list){
+	 var options = "";
+	 const set = new Set();
+	 for (let Matrix of obj_list){
+		 for (let tag of Matrix.tags){
+			 set.add(String(tag).toLowerCase()) 
+			 } 
+		 } 
+	 for (let tag of set){
+			 options +='<option value=" ' + tag + '">';
+		 }
+     document.getElementById('TagList').innerHTML = options; 
+}
+
+
+
+
+
 async function init() {
 	const requestURL = "https://giovannibarbarino.github.io/LA-examples.github.io/objects.json";
 	const request = new Request(requestURL);
@@ -8,8 +27,11 @@ async function init() {
 	const response = await fetch(request);
 	const obj = await response.json();
 	
-	console.log(obj);
+	//console.log(obj);
+	populate_tags(obj);
 }
+
+
 
 
 
