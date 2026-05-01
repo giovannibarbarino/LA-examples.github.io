@@ -1,15 +1,20 @@
  // ✅ Cancella ogni versione locale salvata al caricamento
-  localStorage.removeItem("database");
+  localStorage.removeItem("obj");
 
-let database = [];
+async function init() {
+	const requestURL = "https://giovannibarbarino.github.io/LA-examples.github.io/objects.json";
+	const request = new Request(requestURL);
+
+	const response = await fetch(request);
+	const obj = await response.json();
+	
+	console.log(obj);
+}
 
 
 
 
-
-
-
-
+init();
 
 /*
 fetch("https://giovannibarbarino.github.io/LA-examples.github.io/data/database.json")
