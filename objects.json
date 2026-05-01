@@ -13,5 +13,10 @@
     "id": 3,
     "nome": "Zero",
     "tags": ["diagonal", "symmetric", "binary", "real"]  
+  },
+  {
+    "id": 4,
+    "nome": "Laplacian",
+    "tags": ["symmetric", "real"]  
   }
 ]
