@@ -14,6 +14,10 @@ function populate_tags(obj_list){
 			 options +='<option value=" ' + tag + '">';
 		 }
      document.getElementById('TagList').innerHTML = options; 
+     
+     const tags = Array.from(set).sort();
+     // keep a global tag list 
+     window.__tagList = tags;
 }
 
 
