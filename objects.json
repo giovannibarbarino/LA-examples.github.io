@@ -33,5 +33,15 @@
     "id": 7,
     "nome": "Ones (n>1)",
     "tags": ["symmetric", "binary", "real", "diagonalizable", "Hermitian", "real-eigenvalues"] 
+  },
+  {
+    "id": 8,
+    "nome": "2x2 complex representation of Quaternion j",
+    "tags": ["unitary", "real", "diagonalizable"]
+  },
+  {
+    "id": 9,
+    "nome": "[i]",
+    "tags": ["diagonal", "unitary", "symmetric", "diagonalizable", "invertible"]
   }
 ]
