@@ -128,5 +128,10 @@
     "id": 26,
     "nome": "Ones times i (n>1)",
     "tags": [ "symmetric", "diagonalizable"]  
+  },
+  {
+    "id": 27,
+    "nome": "[1 i; -i 1]",
+    "tags": ["diagonalizable", "Hermitian", "real-eigenvalues"]  
   }
 ]
