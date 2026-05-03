@@ -98,5 +98,15 @@
     "id": 20,
     "nome": "[1 1 1; 0 1 1; 1 0 1]",
     "tags": ["binary", "real", "invertible", "diagonalizable"]  
+  },
+  {
+    "id": 21,
+    "nome": "[0 1 0 0 0; 0 0 0 0 0; 0 0 1 1 1; 0 0 0 1 1; 0 0 1 0 1]",
+    "tags": ["binary", "real"]  
+  },
+  {
+    "id": 22,
+    "nome": "[1 1 0 0 0; 0 1 0 0 0; 0 0 1 1 1; 0 0 0 1 1; 0 0 1 0 1]",
+    "tags": ["binary", "real", "invertible"]  
   }
 ]
