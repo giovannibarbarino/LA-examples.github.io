@@ -123,9 +123,12 @@ function cercaOggetti() {
 	
 	// Normalizza input a lowercase
 	const inclusi = document.getElementById("tagInput").value
-    .split(',').map(t => t.trim().toLowerCase());
+    .split(',').map(t => t.trim().toLowerCase()).filter(t => t);
     const esclusi = document.getElementById("tagExcludedInput").value
-    .split(',').map(t => t.trim().toLowerCase());
+    .split(',').map(t => t.trim().toLowerCase()).filter(t => t);
+    
+    // the 'filter(t => t)' is useful only if the list is empty. 
+    // without it, it does not find any object when 'inclusi' is empty
     
     // sanity check: non ci devono essere tag sia inclusi che esclusi
     if ( CheckConsistency(inclusi,esclusi) ){
@@ -165,26 +168,6 @@ function cercaOggetti() {
 		Suggeriscimi una regola che confuta questa combinazione di tag o un oggetto con queste proprietà!`;}
 	
 	
-	
-	
-	/* 
-  // Verifica violazione regole
-  const violata = regole.find(regola => {
-    return regola.se.every(cond => {
-      return (cond.negato ? esclusi.includes(cond.tag) : inclusi.includes(cond.tag));
-    }) && regola.allora.some(cond => {
-      return (cond.negato ? inclusi.includes(cond.tag) : esclusi.includes(cond.tag));
-    });
-  });
-
-  if (violata) {
-    risultatiDiv.innerHTML = `
-      ❌ <strong>Ricerca non valida</strong>: la combinazione viola la regola <em>${violata.nome}</em>
-    `;
-    return;
-  }
-
-    */
 }
 
 
