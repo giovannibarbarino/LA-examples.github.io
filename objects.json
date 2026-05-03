@@ -118,5 +118,15 @@
     "id": 24,
     "nome": "[i 0; 0 0]",
     "tags": ["diagonal", "symmetric", "diagonalizable"]  
+  },
+  {
+    "id": 25,
+    "nome": "Circulant times i (n>2)",
+    "tags": [ "unitary", "diagonalizable",  "invertible"]  
+  },
+  {
+    "id": 26,
+    "nome": "Ones times i (n>1)",
+    "tags": [ "symmetric", "diagonalizable"]  
   }
 ]
