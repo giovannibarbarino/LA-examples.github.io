@@ -44,6 +44,22 @@ async function init() {
 function cercaOggetti() {
 	const risultatiDiv = document.getElementById("risultati");
 	
+	// Normalizza input a lowercase per confronto case-insensitive
+	const inclusi = document.getElementById("tagInput").value
+    .split(',').map(t => t.trim().toLowerCase());
+    const esclusi = document.getElementById("tagExcludedInput").value
+    .split(',').map(t => t.trim().toLowerCase());
+	
+	for (let Matrix of obj_list){
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 } 
 	
 	
 	/*
