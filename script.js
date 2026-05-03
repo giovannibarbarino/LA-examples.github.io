@@ -1,5 +1,7 @@
  // ✅ Cancella ogni versione locale salvata al caricamento
   localStorage.removeItem("obj");
+  localStorage.removeItem("__tagList");
+  localStorage.removeItem("__objList");
 
 
 function populate_tags(obj_list){
@@ -23,7 +25,6 @@ function populate_tags(obj_list){
 
 
 
-
 async function init() {
 	const requestURL = "https://giovannibarbarino.github.io/LA-examples.github.io/objects.json";
 	const request = new Request(requestURL);
@@ -33,8 +34,62 @@ async function init() {
 	
 	//console.log(obj);
 	populate_tags(obj);
+	window.__objList = obj;
 }
 
+
+
+
+// Ricerca
+function cercaOggetti() {
+	const risultatiDiv = document.getElementById("risultati");
+	
+	
+	
+	/*
+	 * 
+	 * 
+  // Normalizza input a lowercase per confronto case-insensitive
+  const inclusi = document.getElementById("tagInput").value
+    .split(',').map(t => t.trim().toLowerCase()).filter(t => t);
+  const esclusi = document.getElementById("tagEsclusiInput").value
+    .split(',').map(t => t.trim().toLowerCase()).filter(t => t);
+
+  // Verifica violazione regole
+  const violata = regole.find(regola => {
+    return regola.se.every(cond => {
+      return (cond.negato ? esclusi.includes(cond.tag) : inclusi.includes(cond.tag));
+    }) && regola.allora.some(cond => {
+      return (cond.negato ? inclusi.includes(cond.tag) : esclusi.includes(cond.tag));
+    });
+  });
+
+  const risultatiDiv = document.getElementById("risultati");
+
+  if (violata) {
+    risultatiDiv.innerHTML = `
+      ❌ <strong>Ricerca non valida</strong>: la combinazione viola la regola <em>${violata.nome}</em>
+    `;
+    return;
+  }
+
+  // Se non viola, carica e filtra oggetti (confronti case-insensitive)
+  fetch('data/database.json')
+    .then(res => res.json())
+    .then(oggetti => {
+      const filtrati = oggetti.filter(o => {
+        const tagsLower = Array.isArray(o.tags) ? o.tags.map(tt => String(tt).toLowerCase()) : [];
+        return inclusi.every(t => tagsLower.includes(t)) &&
+               esclusi.every(t => !tagsLower.includes(t));
+      });
+
+      risultatiDiv.innerHTML = filtrati.length > 0
+        ? filtrati.map(o => `<div><strong>${o.nome}</strong>: ${o.tags.join(', ')}</div>`).join('')
+        : '🔍 Nessun oggetto trovato.';
+    });
+    
+    */
+}
 
 
 
@@ -282,6 +337,7 @@ function mostraRegole(regole) {
     </div>
   `).join('<hr/>');
 }
+
 
 // Ricerca
 function cercaOggetti() {

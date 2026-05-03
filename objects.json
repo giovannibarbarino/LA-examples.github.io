@@ -1,22 +1,27 @@
 [
   {
     "id": 1,
-    "nome": "Fourier",
-    "tags": ["unitary", "symmetric"]
+    "nome": "Fourier (n>2)",
+    "tags": ["unitary", "symmetric", "diagonalizable"]
   },
   {
     "id": 2,
     "nome": "Identity",
-    "tags": ["diagonal", "unitary", "symmetric", "binary", "real"]
+    "tags": ["diagonal", "unitary", "symmetric", "binary", "real", "diagonalizable", "Hermitian"]
   },
   {
     "id": 3,
     "nome": "Zero",
-    "tags": ["diagonal", "symmetric", "binary", "real"]  
+    "tags": ["diagonal", "symmetric", "binary", "real", "diagonalizable", "Hermitian"]  
   },
   {
     "id": 4,
-    "nome": "Laplacian",
-    "tags": ["symmetric", "real"]  
+    "nome": "Laplacian (n>1)",
+    "tags": ["symmetric", "real", "diagonalizable", "Hermitian"]  
+  },
+  {
+    "id": 5,
+    "nome": "Jordan Block (n>1)",
+    "tags": ["real", "binary"]  
   }
 ]
