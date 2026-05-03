@@ -8,18 +8,19 @@
 </head>
 <body>
 
-ciao
+Matrix search by properties
+
 
 <br>
 
-<input type="text" id="tagInput" list="TagList" placeholder="Proprietà incluse (es: diagonal, real)"  /><br>
-<input type="text" id="tagExcludedInput" list="TagList" placeholder="Proprietà escluse (es: diagonal, real)"  /><br>
+<input type="text" id="tagInput" list="TagList" placeholder="Properties (ex: 'diagonal, real')"  /><br>
+<input type="text" id="tagExcludedInput" list="TagList" placeholder="Negated Properties (ex: 'unitary, hermitian')"  /><br>
 
 
 <datalist id="TagList"></datalist>
 
 
-<button onclick="cercaOggetti()">Cerca</button>
+<button onclick="cercaOggetti()">Search</button>
 <div id="risultati"></div>
 
 <script src="script.js"></script> 
