@@ -23,11 +23,15 @@
     "id": 5,
     "nome": "Jordan Block (n>1)",
     "tags": ["real", "binary"]  
-  }
-  ,
+  },
   {
     "id": 6,
     "nome": "Anti-Diagonal",
     "tags": ["unitary", "symmetric", "binary", "real", "diagonalizable", "Hermitian", "invertible"] 
+  },
+  {
+    "id": 7,
+    "nome": "Ones (n>1)",
+    "tags": ["symmetric", "binary", "real", "diagonalizable", "Hermitian"] 
   }
 ]
