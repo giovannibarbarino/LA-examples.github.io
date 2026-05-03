@@ -43,5 +43,15 @@
     "id": 9,
     "nome": "[i]",
     "tags": ["diagonal", "unitary", "symmetric", "diagonalizable", "invertible"]
+  },
+  {
+    "id": 10,
+    "nome": "Jordan Block times i (n>1)",
+    "tags": ["real-eigenvalues"]  
+  },
+  {
+    "id": 11,
+    "nome": "[0 0 0; 0 1 i; 0 -i 1]",
+    "tags": ["diagonalizable", "Hermitian", "invertible", "real-eigenvalues"]  
   }
 ]
