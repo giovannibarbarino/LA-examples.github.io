@@ -70,7 +70,7 @@ function cercaOggetti() {
     .split(',').map(t => t.trim().toLowerCase());
     
     // sanity check: non ci devono essere tag sia inclusi che esclusi
-    if ( inclusi.any(t => esclusi.includes(t)) ){
+    if ( inclusi.some(t => esclusi.includes(t)) ){
 		risultatiDiv.innerHTML += '<br>Bro. Hai messo lo stesso tag in entrambi i campi.';
 		return;
 	}
