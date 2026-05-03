@@ -63,11 +63,19 @@ function cercaOggetti() {
 	const risultatiDiv = document.getElementById("risultati");
 	risultatiDiv.innerHTML = ``;
 	
-	// Normalizza input a lowercase e confronto con tags di oggetti case-insensitive
+	// Normalizza input a lowercase
 	const inclusi = document.getElementById("tagInput").value
     .split(',').map(t => t.trim().toLowerCase());
     const esclusi = document.getElementById("tagExcludedInput").value
     .split(',').map(t => t.trim().toLowerCase());
+    
+    // sanity check: non ci devono essere tag sia inclusi che esclusi
+    if ( inclusi.any(t => esclusi.includes(t)) ){
+		risultatiDiv.innerHTML += '<br>Bro. Hai messo lo stesso tag in entrambi i campi.';
+		return;
+	}
+    
+    // confronto con tags di oggetti case-insensitive
 	let flag = 0;
 	for (let Matrix of window.__objList){
 		let mat_tags = Matrix.tags.map(t => t.toLowerCase());
