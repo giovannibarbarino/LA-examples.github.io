@@ -57,6 +57,8 @@ async function init() {
 	
 }
 
+// Verifica che una regola si applichi ad un oggetto definito dai suoi tag
+// inclusi-esclusi
 function CheckHypRule(inclusi,esclusi,rule){
 	let flag = true;
 	let Hyp = rule.se;
@@ -66,8 +68,48 @@ function CheckHypRule(inclusi,esclusi,rule){
 	let Hyp_tag_exc = Hyp_exc.map(t => t.tag);
 	
 	return Hyp_tag_inc.every(t => inclusi.includes(t)) && Hyp_tag_exc.every(t => esclusi.includes(t));
-		
+}
+
+// Verifica che lo stesso tag non compaia sia tra gli inclusi che gli esclusi
+// ritorna TRUE se ce ne sono in comune
+function CheckConsistency(inclusi,esclusi){return inclusi.some(t => esclusi.includes(t));}
+
+// Verifica che una coppia di set di tag inclusi-esclusi non violi il
+// set di regole
+function RuleViolation(inclusi,esclusi){
 	
+	let rul = window.__rulList;
+	let flag = true; let c = 1;
+	let aux_inc = inclusi;
+	let aux_esc = esclusi;	
+	
+	while (c > 0){
+		c = 0;
+		for (let Rule of rul){
+			if (CheckHypRule(aux_inc,aux_esc,Rule)){
+				let Thes = Rule.allora;
+				let ThesRul_inc = Thes.filter(t => t.positivo);
+				let ThesRul_tag_inc = ThesRul_inc.map(t => t.tag);
+				
+				let ThesRul_esc = Thes.filter(t => !t.positivo);
+				let ThesRul_tag_esc = ThesRul_esc.map(t => t.tag);
+				
+				if (ThesRul_tag_inc.some(t => !aux_inc.includes(t))){
+					c = 1; 
+					aux_inc = [... new Set([...aux_inc, ...ThesRul_tag_inc])];
+				}
+				if (ThesRul_tag_esc.some(t => !aux_esc.includes(t))){
+					c = 1; 
+					aux_esc = [... new Set([...aux_esc, ...ThesRul_tag_esc])];
+				}
+				if (CheckConsistency(aux_inc,aux_esc)) {return Rule.id;}
+			}
+			
+		}
+	} 
+	
+	
+	return -1;
 }
 
 
@@ -83,8 +125,19 @@ function cercaOggetti() {
     .split(',').map(t => t.trim().toLowerCase());
     
     // sanity check: non ci devono essere tag sia inclusi che esclusi
-    if ( inclusi.some(t => esclusi.includes(t)) ){
+    if ( CheckConsistency(inclusi,esclusi) ){
 		risultatiDiv.innerHTML += '<br>Bro. Hai messo lo stesso tag in entrambi i campi.';
+		return;
+	}
+	
+	let vio = RuleViolation(inclusi,esclusi);
+	if (vio !== -1){
+		Rule = window.__rulList.find(r => r.id == vio);
+		risultatiDiv.innerHTML = `<br>❌ <strong>Ricerca non valida</strong>: la combinazione viola la regola ${vio}:
+		<br><br><div><strong>${Rule.nome}</strong>: 
+		${Rule.se.filter(t => t.positivo).map(t => t.tag).join(', ')} 
+		${Rule.se.filter(t => !t.positivo).map(t => 'non-' + t.tag).join(', ')}
+		 implies ${Rule.allora.map(t => t.tag).join(', ')} </div>`;
 		return;
 	}
     
@@ -97,9 +150,10 @@ function cercaOggetti() {
 			flag = 1;
 		} 
 	} 
-	if (!flag){
-		risultatiDiv.innerHTML += '<br>🔍 Nessun oggetto trovato.';
-	}
+	if (!flag){risultatiDiv.innerHTML += '<br>🔍 Nessun oggetto trovato.';}
+	
+	
+	
 	
 	/* 
   // Verifica violazione regole
