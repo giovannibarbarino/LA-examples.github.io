@@ -88,5 +88,15 @@
     "id": 18,
     "nome": "[0 0 0; 0 2 1; 0 0 2]",
     "tags": ["real", "real-eigenvalues"]  
+  },
+  {
+    "id": 19,
+    "nome": "Circulant (n>2)",
+    "tags": [ "unitary", "binary", "real", "diagonalizable",  "invertible"]  
+  },
+  {
+    "id": 20,
+    "nome": "[1 1 1; 0 1 1; 1 0 1]",
+    "tags": ["binary", "real", "invertible"]  
   }
 ]
