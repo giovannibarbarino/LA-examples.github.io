@@ -97,6 +97,6 @@
   {
     "id": 20,
     "nome": "[1 1 1; 0 1 1; 1 0 1]",
-    "tags": ["binary", "real", "invertible"]  
+    "tags": ["binary", "real", "invertible", "diagonalizable"]  
   }
 ]
