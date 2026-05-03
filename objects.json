@@ -83,5 +83,10 @@
     "id": 17,
     "nome": "[0 1; 0 i]",
     "tags": ["diagonalizable"]  
+  },
+  {
+    "id": 18,
+    "nome": "[0 0 0; 0 2 1; 0 0 2]",
+    "tags": ["real", "real-eigenvalues"]  
   }
 ]
