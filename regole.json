@@ -84,7 +84,7 @@
     "nome": "Sanity Check 3",
     "se": [
       {
-        "tag": "unitary",
+        "tag": "unitardy",
         "positivo": true
       }
     ],
