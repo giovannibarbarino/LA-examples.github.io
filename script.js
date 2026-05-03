@@ -53,9 +53,22 @@ async function init() {
 	window.__rulList = rul;
 	populate_tags();
 	
+	
+	
 }
 
-
+function CheckHypRule(inclusi,esclusi,rule){
+	let flag = true;
+	let Hyp = rule.se;
+	let Hyp_inc = Hyp.filter(t => t.positivo);
+	let Hyp_tag_inc = Hyp_inc.map(t => t.tag);
+	let Hyp_exc = Hyp.filter(t => !t.positivo);
+	let Hyp_tag_exc = Hyp_exc.map(t => t.tag);
+	
+	return Hyp_tag_inc.every(t => inclusi.includes(t)) && Hyp_tag_exc.every(t => esclusi.includes(t));
+		
+	
+}
 
 
 // Ricerca
@@ -109,10 +122,11 @@ function cercaOggetti() {
 }
 
 
-
-
-
 init();
+//console.log( CheckHypRule(["hermitian"],["diagonal"],rul[1]) );
+
+
+
 
 /*
 fetch("https://giovannibarbarino.github.io/LA-examples.github.io/data/database.json")
