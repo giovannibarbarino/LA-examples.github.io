@@ -2,19 +2,31 @@
   localStorage.removeItem("obj");
   localStorage.removeItem("__tagList");
   localStorage.removeItem("__objList");
+  localStorage.removeItem("__rulList");
 
 
 function populate_tags(){
 	 var options = "";
 	 const set = new Set();
+	 // aggiungi tag da matrici
 	 for (let Matrix of window.__objList){
 		 for (let tag of Matrix.tags){
 			 set.add(String(tag).toLowerCase()) 
-			 } 
-		 } 
+		} 
+	} 
+	 // aggiungi tag da regole
+	 for (let Regola of window.__rulList){
+		 for (let tagpn of Regola.se){
+			 set.add(String(tagpn.tag).toLowerCase()) 
+		}  
+		 for (let tagpn of Regola.allora){
+			 set.add(String(tagpn.tag).toLowerCase()) 
+		} 
+	}
+	 // aggiungi tag a suggerimenti
 	 for (let tag of set){
 			 options +='<option value=" ' + tag + '">';
-		 }
+	}
      document.getElementById('TagList').innerHTML = options; 
      
      const tags = Array.from(set).sort();
@@ -26,14 +38,19 @@ function populate_tags(){
 
 
 async function init() {
-	const requestURL = "https://giovannibarbarino.github.io/LA-examples.github.io/objects.json";
-	const request = new Request(requestURL);
-
-	const response = await fetch(request);
+	let requestURL = "https://giovannibarbarino.github.io/LA-examples.github.io/objects.json";
+	let request = new Request(requestURL);
+	let response = await fetch(request);
 	const obj = await response.json();
+	
+	requestURL = "https://giovannibarbarino.github.io/LA-examples.github.io/regole.json";
+	request = new Request(requestURL);
+	response = await fetch(request);
+	const rul = await response.json();
 	
 	//console.log(obj);
 	window.__objList = obj;
+	window.__rulList = rul;
 	populate_tags();
 	
 }

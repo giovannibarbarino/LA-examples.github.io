@@ -42,5 +42,61 @@
         "positivo": true
       }
     ]
+  },
+  {
+    "id": 3,
+    "nome": "Sanity Check 1",
+    "se": [
+      {
+        "tag": "diagonal",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "diagonalizable",
+        "positivo": true
+      },
+      {
+        "tag": "symmetric",
+        "positivo": true
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nome": "Sanity Check 2",
+    "se": [
+      {
+        "tag": "binary",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "real",
+        "positivo": true
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "nome": "Sanity Check 3",
+    "se": [
+      {
+        "tag": "unitary",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "invertible",
+        "positivo": true
+      },
+      {
+        "tag": "diagonalizable",
+        "positivo": true
+      }
+    ]
   }
 ]
