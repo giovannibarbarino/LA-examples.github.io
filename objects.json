@@ -2,12 +2,12 @@
   {
     "id": 1,
     "nome": "Fourier (n>2)",
-    "tags": ["unitary", "symmetric", "diagonalizable"]
+    "tags": ["unitary", "symmetric", "diagonalizable", "invertible"]
   },
   {
     "id": 2,
     "nome": "Identity",
-    "tags": ["diagonal", "unitary", "symmetric", "binary", "real", "diagonalizable", "Hermitian"]
+    "tags": ["diagonal", "unitary", "symmetric", "binary", "real", "diagonalizable", "Hermitian", "invertible"]
   },
   {
     "id": 3,
@@ -17,7 +17,7 @@
   {
     "id": 4,
     "nome": "Laplacian (n>1)",
-    "tags": ["symmetric", "real", "diagonalizable", "Hermitian"]  
+    "tags": ["symmetric", "real", "diagonalizable", "Hermitian", "invertible"]  
   },
   {
     "id": 5,
@@ -28,6 +28,6 @@
   {
     "id": 6,
     "nome": "Anti-Diagonal",
-    "tags": ["unitary", "symmetric", "binary", "real", "diagonalizable", "Hermitian"] 
+    "tags": ["unitary", "symmetric", "binary", "real", "diagonalizable", "Hermitian", "invertible"] 
   }
 ]

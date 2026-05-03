@@ -4,10 +4,10 @@
   localStorage.removeItem("__objList");
 
 
-function populate_tags(obj_list){
+function populate_tags(){
 	 var options = "";
 	 const set = new Set();
-	 for (let Matrix of obj_list){
+	 for (let Matrix of window.__objList){
 		 for (let tag of Matrix.tags){
 			 set.add(String(tag).toLowerCase()) 
 			 } 
@@ -33,8 +33,9 @@ async function init() {
 	const obj = await response.json();
 	
 	//console.log(obj);
-	populate_tags(obj);
 	window.__objList = obj;
+	populate_tags();
+	
 }
 
 
@@ -43,34 +44,26 @@ async function init() {
 // Ricerca
 function cercaOggetti() {
 	const risultatiDiv = document.getElementById("risultati");
+	risultatiDiv.innerHTML = ``;
 	
-	// Normalizza input a lowercase per confronto case-insensitive
+	// Normalizza input a lowercase e confronto con tags di oggetti case-insensitive
 	const inclusi = document.getElementById("tagInput").value
     .split(',').map(t => t.trim().toLowerCase());
     const esclusi = document.getElementById("tagExcludedInput").value
     .split(',').map(t => t.trim().toLowerCase());
+	let flag = 0;
+	for (let Matrix of window.__objList){
+		let mat_tags = Matrix.tags.map(t => t.toLowerCase());
+		if (  inclusi.every(t => mat_tags.includes(t))  &&  esclusi.every(t => !mat_tags.includes(t)) ){
+			risultatiDiv.innerHTML += `<br><div><strong>${Matrix.nome}</strong>: ${Matrix.tags.join(', ')}</div>`;
+			flag = 1;
+		} 
+	} 
+	if (!flag){
+		risultatiDiv.innerHTML += '<br>🔍 Nessun oggetto trovato.';
+	}
 	
-	for (let Matrix of obj_list){
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 } 
-	
-	
-	/*
-	 * 
-	 * 
-  // Normalizza input a lowercase per confronto case-insensitive
-  const inclusi = document.getElementById("tagInput").value
-    .split(',').map(t => t.trim().toLowerCase()).filter(t => t);
-  const esclusi = document.getElementById("tagEsclusiInput").value
-    .split(',').map(t => t.trim().toLowerCase()).filter(t => t);
-
+	/* 
   // Verifica violazione regole
   const violata = regole.find(regola => {
     return regola.se.every(cond => {
@@ -80,8 +73,6 @@ function cercaOggetti() {
     });
   });
 
-  const risultatiDiv = document.getElementById("risultati");
-
   if (violata) {
     risultatiDiv.innerHTML = `
       ❌ <strong>Ricerca non valida</strong>: la combinazione viola la regola <em>${violata.nome}</em>
@@ -89,21 +80,6 @@ function cercaOggetti() {
     return;
   }
 
-  // Se non viola, carica e filtra oggetti (confronti case-insensitive)
-  fetch('data/database.json')
-    .then(res => res.json())
-    .then(oggetti => {
-      const filtrati = oggetti.filter(o => {
-        const tagsLower = Array.isArray(o.tags) ? o.tags.map(tt => String(tt).toLowerCase()) : [];
-        return inclusi.every(t => tagsLower.includes(t)) &&
-               esclusi.every(t => !tagsLower.includes(t));
-      });
-
-      risultatiDiv.innerHTML = filtrati.length > 0
-        ? filtrati.map(o => `<div><strong>${o.nome}</strong>: ${o.tags.join(', ')}</div>`).join('')
-        : '🔍 Nessun oggetto trovato.';
-    });
-    
     */
 }
 
