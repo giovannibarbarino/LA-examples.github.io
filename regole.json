@@ -182,5 +182,25 @@
         "positivo": true
       }
     ]
+  },
+  {
+    "id": 7,
+    "nome": "Sanity Check 8",
+    "se": [
+      {
+        "tag": "hermitian",
+        "positivo": true
+      },
+      {
+        "tag": "real",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "symmetric",
+        "positivo": true
+      }
+    ]
   }
 ]
