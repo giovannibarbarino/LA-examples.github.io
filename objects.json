@@ -101,12 +101,12 @@
   },
   {
     "id": 21,
-    "nome": " \\( \\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}\\)  \\oplus   \\( \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\)",
+    "nome": " \\( \\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}  \\oplus   \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\)",
     "tags": ["binary", "real"]  
   },
   {
     "id": 22,
-    "nome": " \\( \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}\\)  \\oplus   \\( \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\)",
+    "nome": " \\( \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}  \\oplus    \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\)",
     "tags": ["binary", "real", "invertible"]  
   },
   {
@@ -136,7 +136,7 @@
   },
   {
     "id": 28,
-    "nome": " \\( \\begin{bmatrix} 0 & 2 \\\\ 0 & 0 \\end{bmatrix}\\)  \\oplus   \\( \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\)",
+    "nome": " \\( \\begin{bmatrix} 0 & 2 \\\\ 0 & 0 \\end{bmatrix}  \\oplus   \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\)",
     "tags": ["real"]  
   },
   {
