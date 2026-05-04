@@ -143,11 +143,15 @@
     "id": 29,
     "nome": "\\( \\begin{bmatrix} 0 & i \\\\ -i & 0 \\end{bmatrix}\\)",
     "tags": [ "unitary", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"]  
-  }
-  ,
+  },
   {
     "id": 30,
     "nome": "\\( \\begin{bmatrix} 0 & 1 & 1 & 0 \\\\  -1 & 0 & 0 & 1 \\\\  0 & 0 & 0 & 1 \\\\  0 & 0 & -1 & 0  \\end{bmatrix}\\)",
     "tags": ["real", "invertible"]  
+  },
+  {
+    "id": 31,
+    "nome": "\\( \\begin{bmatrix} 1 & i \\\\ i & -1 \\end{bmatrix}\\)",
+    "tags": ["symmetric", "real-eigenvalues"]  
   }
 ]
