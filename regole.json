@@ -158,5 +158,29 @@
         "positivo": true
       }
     ]
+  },
+  {
+    "id": 9,
+    "nome": "Sanity Check 6",
+    "se": [
+      {
+        "tag": "binary",
+        "positivo": true
+      },
+      {
+        "tag": "diagonal",
+        "positivo": true
+      },
+      {
+        "tag": "invertible",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "unitary",
+        "positivo": true
+      }
+    ]
   }
 ]
