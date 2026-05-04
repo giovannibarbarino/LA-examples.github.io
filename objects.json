@@ -138,5 +138,10 @@
     "id": 28,
     "nome": "[0 2 0 0 0; 0 0 0 0 0; 0 0 1 1 1; 0 0 0 1 1; 0 0 1 0 1]",
     "tags": ["real"]  
+  },
+  {
+    "id": 29,
+    "nome": "[0 i; -i 0]",
+    "tags": [ "unitary", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"]  
   }
 ]
