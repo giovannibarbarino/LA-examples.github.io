@@ -116,7 +116,7 @@
   },
   {
     "id": 24,
-    "nome": "[i 0; 0 0]",
+    "nome": "\\([i 0; 0 0]\\)",
     "tags": ["diagonal", "symmetric", "diagonalizable"]  
   },
   {

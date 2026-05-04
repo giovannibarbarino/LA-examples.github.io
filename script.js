@@ -167,7 +167,7 @@ function cercaOggetti() {
 	if (!flag){risultatiDiv.innerHTML += `<br>🔍 Nessun oggetto trovato. <br><br> 
 		Suggeriscimi una regola che confuta questa combinazione di tag o un oggetto con queste proprietà!`;}
 	
-	
+	renderMathInElement(document.body);
 }
 
 
