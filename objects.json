@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "nome": "Fourier (n>2)",
+    "nome": "Fourier \\( (n>2) \\)",
     "tags": ["unitary", "symmetric", "diagonalizable", "invertible"]
   },
   {
@@ -16,12 +16,12 @@
   },
   {
     "id": 4,
-    "nome": "Laplacian (n>1)",
+    "nome": "Laplacian \\( (n>1) \\)",
     "tags": ["symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"]  
   },
   {
     "id": 5,
-    "nome": "Jordan Block (n>1)",
+    "nome": "Jordan Block \\( (n>1) \\)",
     "tags": ["real", "binary", "real-eigenvalues"]  
   },
   {
@@ -31,27 +31,27 @@
   },
   {
     "id": 7,
-    "nome": "Ones (n>1)",
+    "nome": "Ones \\( (n>1) \\)",
     "tags": ["symmetric", "binary", "real", "diagonalizable", "Hermitian", "real-eigenvalues"] 
   },
   {
     "id": 8,
-    "nome": "2x2 complex representation of Quaternion j",
+    "nome": "\\( 2 \\times 2 \\) complex representation of Quaternion \\( j \\)",
     "tags": ["unitary", "real", "diagonalizable", "invertible"]
   },
   {
     "id": 9,
-    "nome": "[i]",
+    "nome": "Complex number \\(i\\)",
     "tags": ["diagonal", "unitary", "symmetric", "diagonalizable", "invertible"]
   },
   {
     "id": 10,
-    "nome": "Jordan Block times i (n>1)",
+    "nome": "Jordan Block times \\(i\\) \\( (n>1) \\)",
     "tags": ["real-eigenvalues"]  
   },
   {
     "id": 11,
-    "nome": "[0 0 0; 0 1 i; 0 -i 1]",
+    "nome": "\\( \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 1 &  i \\\\ 0 & -i & 1 \\end{bmatrix}\\)",
     "tags": ["diagonalizable", "Hermitian", "invertible", "real-eigenvalues"]  
   },
   {
@@ -61,22 +61,22 @@
   },
   {
     "id": 13,
-    "nome": "Jordan Block with eigenvalue 1 (n>1)",
+    "nome": "Jordan Block with eigenvalue \\( 1 \\) \\( (n>1) \\)",
     "tags": ["binary", "real", "invertible", "real-eigenvalues"]  
   },
   {
     "id": 14,
-    "nome": "Jordan Block with eigenvalue 2 (n>1)",
+    "nome": "Jordan Block with eigenvalue \\(2\\) \\( (n>1) \\)",
     "tags": ["real", "invertible", "real-eigenvalues"]  
   },
   {
     "id": 15,
-    "nome": "Jordan Block with eigenvalue i (n>1)",
+    "nome": "Jordan Block with eigenvalue \\(i\\) \\( (n>1) \\)",
     "tags": ["invertible"]  
   },
   {
     "id": 16,
-    "nome": "[0 0 0; 0 i 1; 0 0 i]",
+    "nome": "\\( \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & i &  1 \\\\ 0 & 0 & i \\end{bmatrix}\\)",
     "tags": []  
   },
   {
@@ -86,27 +86,27 @@
   },
   {
     "id": 18,
-    "nome": "[0 0 0; 0 2 1; 0 0 2]",
+    "nome": "\\( \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 2 &  1 \\\\ 0 & 0 & 2 \\end{bmatrix}\\)",
     "tags": ["real", "real-eigenvalues"]  
   },
   {
     "id": 19,
-    "nome": "Circulant (n>2)",
+    "nome": "Circulant \\( (n>2) \\)",
     "tags": [ "unitary", "binary", "real", "diagonalizable",  "invertible"]  
   },
   {
     "id": 20,
-    "nome": "[1 1 1; 0 1 1; 1 0 1]",
+    "nome": "\\( \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\)",
     "tags": ["binary", "real", "invertible", "diagonalizable"]  
   },
   {
     "id": 21,
-    "nome": "[0 1 0 0 0; 0 0 0 0 0; 0 0 1 1 1; 0 0 0 1 1; 0 0 1 0 1]",
+    "nome": " \\( \\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}\\)  \\oplus   \\( \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\)",
     "tags": ["binary", "real"]  
   },
   {
     "id": 22,
-    "nome": "[1 1 0 0 0; 0 1 0 0 0; 0 0 1 1 1; 0 0 0 1 1; 0 0 1 0 1]",
+    "nome": " \\( \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}\\)  \\oplus   \\( \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\)",
     "tags": ["binary", "real", "invertible"]  
   },
   {
@@ -136,7 +136,7 @@
   },
   {
     "id": 28,
-    "nome": "[0 2 0 0 0; 0 0 0 0 0; 0 0 1 1 1; 0 0 0 1 1; 0 0 1 0 1]",
+    "nome": " \\( \\begin{bmatrix} 0 & 2 \\\\ 0 & 0 \\end{bmatrix}\\)  \\oplus   \\( \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\)",
     "tags": ["real"]  
   },
   {
