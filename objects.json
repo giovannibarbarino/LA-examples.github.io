@@ -141,7 +141,7 @@
   },
   {
     "id": 29,
-    "nome": "[0 i; -i 0]",
+    "nome": "\([0 i; -i 0]\)",
     "tags": [ "unitary", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"]  
   }
 ]
