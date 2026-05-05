@@ -162,7 +162,7 @@
   {
     "id": 33,
     "nome": "Number \\(2\\)",
-    "tags": ["diagonal", "unitary", "symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"] 
+    "tags": ["diagonal",  "symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"] 
   },
   {
     "id": 34,
