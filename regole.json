@@ -202,5 +202,25 @@
         "positivo": true
       }
     ]
+  },
+  {
+    "id": 11,
+    "nome": "Sanity Check 9",
+    "se": [
+      {
+        "tag": "diagonal",
+        "positivo": true
+      },
+      {
+        "tag": "real-eigenvalues",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "real",
+        "positivo": true
+      }
+    ]
   }
 ]
