@@ -207,7 +207,7 @@
   {
     "id": 42,
     "nome": "\\( \\frac{1}{\\sqrt 2} \\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\end{bmatrix}\\)",
-    "tags": [ "symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "unitary"]  
+    "tags": ["symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "unitary"]  
   },
   {
     "id": 43,
@@ -217,16 +217,26 @@
   {
     "id": 44,
     "nome": "\\(  \\begin{bmatrix} 0 & 1 \\\\ 0 & 1 \\end{bmatrix}\\)",
-    "tags": [ "binary", "real", "diagonalizable", "real-eigenvalues"]  
+    "tags": ["binary", "real", "diagonalizable", "real-eigenvalues"]  
   },
   {
     "id": 45,
     "nome": "\\(  \\begin{bmatrix} 0 & -1 \\\\ 0 & 1 \\end{bmatrix}\\)",
-    "tags": [ "real", "diagonalizable", "real-eigenvalues"]  
+    "tags": ["real", "diagonalizable", "real-eigenvalues"]  
   },
   {
     "id": 46,
     "nome": "\\(  \\begin{bmatrix} 0 & 2 \\\\ -2 & 0 \\end{bmatrix}\\)",
-    "tags": [ "real", "diagonalizable", "invertible"]  
+    "tags": ["real", "diagonalizable", "invertible"]  
+  },
+  {
+    "id": 47,
+    "nome": "\\(  \\begin{bmatrix} 0 & -i \\\\ 2i & 0 \\end{bmatrix}\\)",
+    "tags": ["diagonalizable", "invertible", "real-eigenvalues"]  
+  },
+  {
+    "id": 48,
+    "nome": "\\(  \\begin{bmatrix} 0 & 1 \\\\ 2 & 0 \\end{bmatrix}\\)",
+    "tags": ["real", "diagonalizable", "invertible", "real-eigenvalues"]  
   }
 ]
