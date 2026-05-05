@@ -171,6 +171,18 @@ function cercaOggetti() {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 init();
 //console.log( CheckHypRule(["hermitian"],["diagonal"],rul[1]) );
 
