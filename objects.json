@@ -193,5 +193,10 @@
     "id": 39,
     "nome": "Number \\(-1\\)",
     "tags": ["diagonal",  "symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "unitary"] 
+  },
+  {
+    "id": 40,
+    "nome": "Number \\(2i\\)",
+    "tags": ["diagonal",  "symmetric", "diagonalizable", "invertible"] 
   }
 ]
