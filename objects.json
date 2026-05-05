@@ -178,5 +178,15 @@
     "id": 36,
     "nome": "\\( [i] \\oplus \\begin{bmatrix} 1 & i \\\\ i & -1 \\end{bmatrix}\\)",
     "tags": ["symmetric"]  
+  },
+  {
+    "id": 37,
+    "nome": "\\( \\begin{bmatrix} 2 & i \\\\ i & 0 \\end{bmatrix}\\)",
+    "tags": ["symmetric", "real-eigenvalues", "invertible"]  
+  },
+  {
+    "id": 38,
+    "nome": "\\( \\begin{bmatrix} 1+i & i \\\\ i & i-1 \\end{bmatrix}\\)",
+    "tags": ["symmetric",  "invertible"]  
   }
 ]
