@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "nome": "Teorema Spettrale",
+    "nome": "Sanity Check 8",
     "se": [
       {
-        "tag": "symmetric",
+        "tag": "hermitian",
         "positivo": true
       },
       {
@@ -14,11 +14,7 @@
     ],
     "allora": [
       {
-        "tag": "diagonalizable",
-        "positivo": true
-      },
-      {
-        "tag": "real-eigenvalues",
+        "tag": "symmetric",
         "positivo": true
       }
     ]
@@ -101,14 +97,14 @@
   },
   {
     "id": 6,
-    "nome": "Sanity Check 4",
+    "nome": "Sanity Check 9",
     "se": [
       {
         "tag": "diagonal",
         "positivo": true
       },
       {
-        "tag": "hermitian",
+        "tag": "real-eigenvalues",
         "positivo": true
       }
     ],
@@ -179,46 +175,6 @@
     "allora": [
       {
         "tag": "unitary",
-        "positivo": true
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "nome": "Sanity Check 8",
-    "se": [
-      {
-        "tag": "hermitian",
-        "positivo": true
-      },
-      {
-        "tag": "real",
-        "positivo": true
-      }
-    ],
-    "allora": [
-      {
-        "tag": "symmetric",
-        "positivo": true
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "nome": "Sanity Check 9",
-    "se": [
-      {
-        "tag": "diagonal",
-        "positivo": true
-      },
-      {
-        "tag": "real-eigenvalues",
-        "positivo": true
-      }
-    ],
-    "allora": [
-      {
-        "tag": "real",
         "positivo": true
       }
     ]
