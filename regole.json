@@ -178,5 +178,25 @@
         "positivo": true
       }
     ]
+  },
+  {
+    "id": 10,
+    "nome": "Sanity Check 4",
+    "se": [
+      {
+        "tag": "hermitian",
+        "positivo": true
+      },
+      {
+        "tag": "symmetric",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "real",
+        "positivo": true
+      }
+    ]
   }
 ]
