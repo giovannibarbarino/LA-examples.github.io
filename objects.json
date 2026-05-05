@@ -168,5 +168,10 @@
     "id": 34,
     "nome": "\\( \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 &  1 \\\\ 0 & -1 & 0 \\end{bmatrix}\\)",
     "tags": ["real", "diagonalizable"]  
+  },
+  {
+    "id": 33,
+    "nome": "\\( \\begin{bmatrix} 0 & 0 \\\\ 0 & 2 \\end{bmatrix}\\)",
+    "tags": ["diagonal",  "symmetric", "real", "diagonalizable", "Hermitian", "real-eigenvalues"]  
   }
 ]
