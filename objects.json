@@ -52,7 +52,7 @@
   {
     "id": 11,
     "nome": "\\( \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 1 &  i \\\\ 0 & -i & 1 \\end{bmatrix}\\)",
-    "tags": ["diagonalizable", "Hermitian", "invertible", "real-eigenvalues"]  
+    "tags": ["diagonalizable", "Hermitian", "real-eigenvalues"]
   },
   {
     "id": 12,
