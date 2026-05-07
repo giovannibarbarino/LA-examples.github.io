@@ -51,8 +51,8 @@
   },
   {
     "id": 11,
-    "nome": "\\( \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 1 &  i \\\\ 0 & -i & 1 \\end{bmatrix}\\)",
-    "tags": ["diagonalizable", "Hermitian", "real-eigenvalues"]
+    "nome": "\\( \\begin{bmatrix} 0 &  2i \\\\  -2i & 0 \\end{bmatrix}\\)",
+    "tags": ["diagonalizable", "Hermitian", "real-eigenvalues", "invertible"]
   },
   {
     "id": 12,
