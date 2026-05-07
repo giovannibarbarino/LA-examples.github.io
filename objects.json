@@ -238,5 +238,20 @@
     "id": 48,
     "nome": "\\(  \\begin{bmatrix} 0 & 1 \\\\ 2 & 0 \\end{bmatrix}\\)",
     "tags": ["real", "diagonalizable", "invertible", "real-eigenvalues"]  
+  },
+  {
+    "id": 49,
+    "nome": "\\(  \\begin{bmatrix} 1 & i\\sqrt 2 \\\\ i\\sqrt 2 & -1 \\end{bmatrix}\\)",
+    "tags": [ "diagonalizable", "invertible", "symmetric"]  
+  },
+  {
+    "id": 50,
+    "nome": "\\(  \\begin{bmatrix} i & \\sqrt 2 \\\\ \\sqrt 2 & -i \\end{bmatrix}\\)",
+    "tags": [ "diagonalizable", "invertible", "symmetric", "real-eigenvalues"]  
+  },
+  {
+    "id": 51,
+    "nome": "\\(  \\begin{bmatrix} 2 & i\\sqrt 2 \\\\ i\\sqrt 2 & -1 \\end{bmatrix}\\)",
+    "tags": [ "diagonalizable", "real-eigenvalues", "symmetric"]  
   }
 ]
