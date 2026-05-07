@@ -253,5 +253,10 @@
     "id": 51,
     "nome": "\\(  \\begin{bmatrix} 2 & i\\sqrt 2 \\\\ i\\sqrt 2 & -1 \\end{bmatrix}\\)",
     "tags": [ "diagonalizable", "real-eigenvalues", "symmetric"]  
+  },
+  {
+    "id": 52,
+    "nome": "\\( [0] \\oplus \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\)",
+    "tags": ["binary", "real",  "diagonalizable"]  
   }
 ]
