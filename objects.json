@@ -2,22 +2,22 @@
   {
     "id": 1,
     "nome": "Fourier \\( (n>2) \\)",
-    "tags": ["unitary", "symmetric", "diagonalizable", "invertible"]
+    "tags": ["unitary", "symmetric", "diagonalizable", "invertible", "normal"]
   },
   {
     "id": 2,
     "nome": "Identity",
-    "tags": ["diagonal", "unitary", "symmetric", "binary", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"]
+    "tags": ["diagonal", "unitary", "symmetric", "binary", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "normal"]
   },
   {
     "id": 3,
     "nome": "Zero",
-    "tags": ["diagonal", "symmetric", "binary", "real", "diagonalizable", "Hermitian", "real-eigenvalues"]  
+    "tags": ["diagonal", "symmetric", "binary", "real", "diagonalizable", "Hermitian", "real-eigenvalues", "normal"]  
   },
   {
     "id": 4,
     "nome": "Laplacian \\( (n>1) \\)",
-    "tags": ["symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"]  
+    "tags": ["symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "normal"]  
   },
   {
     "id": 5,
@@ -27,22 +27,22 @@
   {
     "id": 6,
     "nome": "Anti-Diagonal",
-    "tags": ["unitary", "symmetric", "binary", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"] 
+    "tags": ["unitary", "symmetric", "binary", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "normal"] 
   },
   {
     "id": 7,
     "nome": "Ones \\( (n>1) \\)",
-    "tags": ["symmetric", "binary", "real", "diagonalizable", "Hermitian", "real-eigenvalues"] 
+    "tags": ["symmetric", "binary", "real", "diagonalizable", "Hermitian", "real-eigenvalues", "normal"] 
   },
   {
     "id": 8,
     "nome": "\\( 2 \\times 2 \\) complex representation of Quaternion \\( j \\)",
-    "tags": ["unitary", "real", "diagonalizable", "invertible"]
+    "tags": ["unitary", "real", "diagonalizable", "invertible", "normal"]
   },
   {
     "id": 9,
     "nome": "Complex number \\(i\\)",
-    "tags": ["diagonal", "unitary", "symmetric", "diagonalizable", "invertible"]
+    "tags": ["diagonal", "unitary", "symmetric", "diagonalizable", "invertible", "normal"]
   },
   {
     "id": 10,
@@ -52,7 +52,7 @@
   {
     "id": 11,
     "nome": "\\( \\begin{bmatrix} 0 &  2i \\\\  -2i & 0 \\end{bmatrix}\\)",
-    "tags": ["diagonalizable", "Hermitian", "real-eigenvalues", "invertible"]
+    "tags": ["diagonalizable", "Hermitian", "real-eigenvalues", "invertible", "normal"]
   },
   {
     "id": 12,
@@ -92,7 +92,7 @@
   {
     "id": 19,
     "nome": "Circulant \\( (n>2) \\)",
-    "tags": [ "unitary", "binary", "real", "diagonalizable",  "invertible"]  
+    "tags": [ "unitary", "binary", "real", "diagonalizable",  "invertible", "normal"]  
   },
   {
     "id": 20,
@@ -117,22 +117,22 @@
   {
     "id": 24,
     "nome": "\\( \\begin{bmatrix} i & 0 \\\\ 0 & 0 \\end{bmatrix}\\)",
-    "tags": ["diagonal", "symmetric", "diagonalizable"]  
+    "tags": ["diagonal", "symmetric", "diagonalizable", "normal"]  
   },
   {
     "id": 25,
     "nome": "Circulant times \\(i\\) \\( (n>2) \\)",
-    "tags": [ "unitary", "diagonalizable",  "invertible"]  
+    "tags": [ "unitary", "diagonalizable",  "invertible", "normal"]  
   },
   {
     "id": 26,
     "nome": "Ones times \\(i\\) \\( (n>1) \\)",
-    "tags": [ "symmetric", "diagonalizable"]  
+    "tags": [ "symmetric", "diagonalizable", "normal"]  
   },
   {
     "id": 27,
     "nome": "\\( \\begin{bmatrix} 1 & i \\\\ -i & 1 \\end{bmatrix}\\)",
-    "tags": ["diagonalizable", "Hermitian", "real-eigenvalues"]  
+    "tags": ["diagonalizable", "Hermitian", "real-eigenvalues", "normal"]  
   },
   {
     "id": 28,
@@ -142,7 +142,7 @@
   {
     "id": 29,
     "nome": "\\( \\begin{bmatrix} 0 & i \\\\ -i & 0 \\end{bmatrix}\\)",
-    "tags": [ "unitary", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"]  
+    "tags": [ "unitary", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "normal"]  
   },
   {
     "id": 30,
@@ -157,22 +157,22 @@
   {
     "id": 32,
     "nome": "\\( \\begin{bmatrix} 1 & 1 \\\\ 1 & 0 \\end{bmatrix}\\)",
-    "tags": ["symmetric", "binary", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"]  
+    "tags": ["symmetric", "binary", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "normal"]  
   },
   {
     "id": 33,
     "nome": "Number \\(2\\)",
-    "tags": ["diagonal",  "symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues"] 
+    "tags": ["diagonal",  "symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "normal"] 
   },
   {
     "id": 34,
-    "nome": "\\( \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 &  1 \\\\ 0 & -1 & 0 \\end{bmatrix}\\)",
-    "tags": ["real", "diagonalizable"]  
+    "nome": "\\( [0] \\oplus \\begin{bmatrix}  0 &  1 \\\\  -1 & 0 \\end{bmatrix}\\)",
+    "tags": ["real", "diagonalizable", "normal"]  
   },
   {
     "id": 35,
     "nome": "\\( \\begin{bmatrix} 0 & 0 \\\\ 0 & 2 \\end{bmatrix}\\)",
-    "tags": ["diagonal",  "symmetric", "real", "diagonalizable", "Hermitian", "real-eigenvalues"]  
+    "tags": ["diagonal",  "symmetric", "real", "diagonalizable", "Hermitian", "real-eigenvalues", "normal"]  
   },
   {
     "id": 36,
@@ -192,12 +192,12 @@
   {
     "id": 39,
     "nome": "Number \\(-1\\)",
-    "tags": ["diagonal",  "symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "unitary"] 
+    "tags": ["diagonal",  "symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "unitary", "normal"] 
   },
   {
     "id": 40,
     "nome": "Number \\(2i\\)",
-    "tags": ["diagonal",  "symmetric", "diagonalizable", "invertible"] 
+    "tags": ["diagonal",  "symmetric", "diagonalizable", "invertible", "normal"] 
   },
   {
     "id": 41,
@@ -207,12 +207,12 @@
   {
     "id": 42,
     "nome": "\\( \\frac{1}{\\sqrt 2} \\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\end{bmatrix}\\)",
-    "tags": ["symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "unitary"]  
+    "tags": ["symmetric", "real", "diagonalizable", "Hermitian", "invertible", "real-eigenvalues", "unitary", "normal"]  
   },
   {
     "id": 43,
     "nome": "Twos \\( (n>1) \\)",
-    "tags": ["symmetric", "real", "diagonalizable", "Hermitian", "real-eigenvalues"] 
+    "tags": ["symmetric", "real", "diagonalizable", "Hermitian", "real-eigenvalues", "normal"] 
   },
   {
     "id": 44,
@@ -227,7 +227,7 @@
   {
     "id": 46,
     "nome": "\\(  \\begin{bmatrix} 0 & 2 \\\\ -2 & 0 \\end{bmatrix}\\)",
-    "tags": ["real", "diagonalizable", "invertible"]  
+    "tags": ["real", "diagonalizable", "invertible", "normal"]  
   },
   {
     "id": 47,
