@@ -198,5 +198,89 @@
         "positivo": true
       }
     ]
+  },
+  {
+    "id": 11,
+    "nome": "Hermitian is Normal",
+    "se": [
+      {
+        "tag": "hermitian",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "normal",
+        "positivo": true
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "nome": "Unitary is Normal",
+    "se": [
+      {
+        "tag": "unitary",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "normal",
+        "positivo": true
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "nome": "diagonal is Normal",
+    "se": [
+      {
+        "tag": "diagonal",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "normal",
+        "positivo": true
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "nome": "Normal with real eig is hermitian",
+    "se": [
+      {
+        "tag": "normal",
+        "positivo": true
+      },
+      {
+        "tag": "real-eigenvalues",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "hermitian",
+        "positivo": true
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "nome": "normal is diagonalizable",
+    "se": [
+      {
+        "tag": "normal",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "diagonalizable",
+        "positivo": true
+      }
+    ]
   }
 ]
