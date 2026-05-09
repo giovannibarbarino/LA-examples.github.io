@@ -318,5 +318,37 @@
         "positivo": false
       }
     ]
+  },
+  {
+    "id": 17,
+    "nome": "Sanity Check 8",
+    "se": [
+      {
+        "tag": "skew-hermitian",
+        "positivo": true
+      },
+      {
+        "tag": "hermitian",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "invertible",
+        "positivo": false
+      },
+      {
+        "tag": "diagonal",
+        "positivo": true
+      },
+      {
+        "tag": "symmetric",
+        "positivo": true
+      },
+      {
+        "tag": "binary",
+        "positivo": true
+      }
+    ]
   }
 ]
