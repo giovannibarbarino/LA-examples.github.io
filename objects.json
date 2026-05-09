@@ -127,7 +127,7 @@
   {
     "id": 26,
     "nome": "Ones times \\(i\\) \\( (n>1) \\)",
-    "tags": [ "symmetric", "diagonalizable", "normal"]  
+    "tags": [ "symmetric", "diagonalizable", "normal", "skew-hermitian"]  
   },
   {
     "id": 27,
