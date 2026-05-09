@@ -374,5 +374,37 @@
         "positivo": true
       }
     ]
+  },
+  {
+    "id": 20,
+    "nome": "Sanity Check 11",
+    "se": [
+      {
+        "tag": "skew-hermitian",
+        "positivo": true
+      },
+      {
+        "tag": "real",
+        "positivo": true
+      },
+      {
+        "tag": "diagonal",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "invertible",
+        "positivo": false
+      },
+      {
+        "tag": "hermitian",
+        "positivo": true
+      },
+      {
+        "tag": "binary",
+        "positivo": true
+      }
+    ]
   }
 ]
