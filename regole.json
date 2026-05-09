@@ -282,5 +282,41 @@
         "positivo": true
       }
     ]
+  },
+  {
+    "id": 16,
+    "nome": "skew-hermitian is normal",
+    "se": [
+      {
+        "tag": "skew-hermitian",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "normal",
+        "positivo": true
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "nome": "Sanity Check 8",
+    "se": [
+      {
+        "tag": "skew-hermitian",
+        "positivo": true
+      },
+      {
+        "tag": "invertible",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "real-eigenvalues",
+        "positivo": false
+      }
+    ]
   }
 ]

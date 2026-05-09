@@ -12,7 +12,7 @@
   {
     "id": 3,
     "nome": "Zero",
-    "tags": ["diagonal", "symmetric", "binary", "real", "diagonalizable", "Hermitian", "real-eigenvalues", "normal"]  
+    "tags": ["diagonal", "symmetric", "binary", "real", "diagonalizable", "Hermitian", "real-eigenvalues", "normal", "skew-hermitian"]  
   },
   {
     "id": 4,
@@ -37,12 +37,12 @@
   {
     "id": 8,
     "nome": "\\( 2 \\times 2 \\) complex representation of Quaternion \\( j \\)",
-    "tags": ["unitary", "real", "diagonalizable", "invertible", "normal"]
+    "tags": ["unitary", "real", "diagonalizable", "invertible", "normal", "skew-hermitian"]
   },
   {
     "id": 9,
     "nome": "Complex number \\(i\\)",
-    "tags": ["diagonal", "unitary", "symmetric", "diagonalizable", "invertible", "normal"]
+    "tags": ["diagonal", "unitary", "symmetric", "diagonalizable", "invertible", "normal", "skew-hermitian"]
   },
   {
     "id": 10,
@@ -117,7 +117,7 @@
   {
     "id": 24,
     "nome": "\\( \\begin{bmatrix} i & 0 \\\\ 0 & 0 \\end{bmatrix}\\)",
-    "tags": ["diagonal", "symmetric", "diagonalizable", "normal"]  
+    "tags": ["diagonal", "symmetric", "diagonalizable", "normal", "skew-hermitian"]  
   },
   {
     "id": 25,
@@ -167,7 +167,7 @@
   {
     "id": 34,
     "nome": "\\( [0] \\oplus \\begin{bmatrix}  0 &  1 \\\\  -1 & 0 \\end{bmatrix}\\)",
-    "tags": ["real", "diagonalizable", "normal"]  
+    "tags": ["real", "diagonalizable", "normal", "skew-hermitian"]  
   },
   {
     "id": 35,
@@ -197,7 +197,7 @@
   {
     "id": 40,
     "nome": "Number \\(2i\\)",
-    "tags": ["diagonal",  "symmetric", "diagonalizable", "invertible", "normal"] 
+    "tags": ["diagonal",  "symmetric", "diagonalizable", "invertible", "normal", "skew-hermitian"] 
   },
   {
     "id": 41,
@@ -227,7 +227,7 @@
   {
     "id": 46,
     "nome": "\\(  \\begin{bmatrix} 0 & 2 \\\\ -2 & 0 \\end{bmatrix}\\)",
-    "tags": ["real", "diagonalizable", "invertible", "normal"]  
+    "tags": ["real", "diagonalizable", "invertible", "normal", "skew-hermitian"]  
   },
   {
     "id": 47,
@@ -272,7 +272,7 @@
   {
     "id": 55,
     "nome": "\\( \\begin{bmatrix} i &  1 \\\\ -1 & i  \\end{bmatrix}\\)",
-    "tags": [  "diagonalizable",  "normal"]  
+    "tags": [  "diagonalizable",  "normal", "skew-hermitian"]  
   },
   {
     "id": 56,
