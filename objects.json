@@ -263,5 +263,25 @@
     "id": 53,
     "nome": "\\( \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  0 \\\\ 1 & 1 & 0 \\end{bmatrix}\\)",
     "tags": [ "binary", "real", "diagonalizable", "invertible", "real-eigenvalues"]  
+  },
+  {
+    "id": 54,
+    "nome": "\\( \\begin{bmatrix} 1+i &  1 \\\\ -1 & 1+i  \\end{bmatrix}\\)",
+    "tags": [  "diagonalizable",  "invertible",  "normal"]  
+  },
+  {
+    "id": 55,
+    "nome": "\\( \\begin{bmatrix} i &  1 \\\\ -1 & i  \\end{bmatrix}\\)",
+    "tags": [  "diagonalizable",  "normal"]  
+  },
+  {
+    "id": 56,
+    "nome": "\\( \\begin{bmatrix} 1 &  1 \\\\ -2 & 1  \\end{bmatrix}\\)",
+    "tags": [  "diagonalizable",  "real", "invertible"]  
+  },
+  {
+    "id": 57,
+    "nome": "\\( [0] \\oplus \\begin{bmatrix} 1 &  1 \\\\ -2 & 1  \\end{bmatrix}\\)",
+    "tags": [  "diagonalizable",  "real"]  
   }
 ]
