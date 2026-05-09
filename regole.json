@@ -342,11 +342,35 @@
         "positivo": true
       },
       {
-        "tag": "symmetric",
+        "tag": "binary",
+        "positivo": true
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "nome": "Sanity Check 10",
+    "se": [
+      {
+        "tag": "skew-hermitian",
         "positivo": true
       },
       {
         "tag": "binary",
+        "positivo": true
+      }
+    ],
+    "allora": [
+      {
+        "tag": "invertible",
+        "positivo": false
+      },
+      {
+        "tag": "diagonal",
+        "positivo": true
+      },
+      {
+        "tag": "hermitian",
         "positivo": true
       }
     ]
