@@ -1,26 +1,24 @@
 const dimension = document.getElementById("MatDim");
 const matrix = document.getElementById("input-matrix");
+var real_d = 0;
 
 dimension.addEventListener("input", updateValue);
 
 function InsertMatrixForm(d){
-	matrix.textContent = '';
-	
-	matrix.textContent += '<form id="inputField" role="form">';
-	
-	
-	matrix.textContent += 'a</form>';
-	//matrix.textContent = d;
+	matrix.innerHTML = ''
+	//matrix.innerHTML = '<form id="inputMatrix" role="form">';
+	for (let i = 1; i < d+1; i++){
+		matrix.innerHTML += '<br>';
+		for (let j = 1; j < d+1; j++) matrix.innerHTML += ('<input type="text" name="entry' + i + j + '" size="1" />');
+	}
+	//matrix.innerHTML += '</form>';
 }
-
-
-
 
 
 function updateValue(e) {
 	let d = Number(e.target.value);
-	if (Number.isInteger(d) && 0<d && d<6){ InsertMatrixForm(d) }
-	else {matrix.textContent = '';}
+	if (Number.isInteger(d) && 0<d && d<6){ InsertMatrixForm(d); real_d = d;}
+	else {matrix.innerHTML = ''; real_d = 0;}
 }
 
 
