@@ -283,8 +283,7 @@
     "id": 57,
     "nome": "\\( [0] \\oplus \\begin{bmatrix} 1 &  1 \\\\ -2 & 1  \\end{bmatrix}\\)",
     "tags": [  "diagonalizable",  "real"]  
-  }
-  ,
+  },
   {
     "id": 58,
     "nome": "\\(  \\begin{bmatrix} 1 &  0 \\\\ 0 & 0  \\end{bmatrix}\\)",
