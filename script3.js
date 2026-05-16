@@ -1,5 +1,9 @@
+// import { zeros } from './math.js'
+//const { zeros } = require('./math.js');
+
 const dimension = document.getElementById("MatDim");
 const matrix = document.getElementById("input-matrix");
+const VT = document.getElementById("verified-tags");
 var real_d = 0;
 
 dimension.addEventListener("input", updateValue);
@@ -21,6 +25,34 @@ function updateValue(e) {
 	else {matrix.innerHTML = ''; real_d = 0;}
 }
 
+function TagVerification(){
+	
+	if (real_d == 0) {return;}
+	let VTtext = '';
+	let a = math.zeros(math.matrix([real_d, real_d]));
+	for (let i = 1; i < real_d+1; i++){
+		for (let j = 1; j < real_d+1; j++) {
+			let aux_entry = document.getElementsByName(`entry${i}${j}`)[0].value;
+			if (!isNaN(aux_entry)) a.set([i-1,j-1], Number(aux_entry));
+		}
+	}
+	
+	VTtext = `<br>Your selected matrix is \\( \\begin{bmatrix}`;
+	for (let i = 1; i < real_d+1; i++){
+		for (let j = 1; j < real_d+1; j++) {
+			VTtext += `${a.get([i-1,j-1])}`;
+			if (j != real_d) VT.innerHTML += `&`;
+		}
+		if (i != real_d) VT.innerHTML += ` \\\\ `;
+	}
+	VTtext += `\\end{bmatrix}\\)`;
+	VT.innerHTML = VTtext;
+	console.log(a);
+	
+	
+	
+}
+
 
 
 /*
@@ -40,5 +72,7 @@ function updateValue(e) {
 				<input type="text" name="field22" size="3">
 				<input type="text" name="field23" size="3">
 			</form>
+			
+			"\\( \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 &  0 \\\\ 1 & 1 & 0 \\end{bmatrix}\\)"
  */
 
