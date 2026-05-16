@@ -25,6 +25,13 @@ function updateValue(e) {
 	else {matrix.innerHTML = ''; real_d = 0;}
 }
 
+
+function IsDiag(M) {
+	if (math.deepEqual(M,math.diag(math.diag(M)))) return true;
+	else return false;
+}
+
+
 function TagVerification(){
 	
 	if (real_d == 0) {return;}
@@ -37,19 +44,21 @@ function TagVerification(){
 		}
 	}
 	
-	VTtext = `<br>Your selected matrix is \\( \\begin{bmatrix}`;
+	VTtext = `<br>Your selected matrix is <strong>\\( \\begin{bmatrix} `;
 	for (let i = 1; i < real_d+1; i++){
 		for (let j = 1; j < real_d+1; j++) {
 			VTtext += `${a.get([i-1,j-1])}`;
-			if (j != real_d) VT.innerHTML += `&`;
+			if (j != real_d) VTtext += ` & `;
 		}
-		if (i != real_d) VT.innerHTML += ` \\\\ `;
+		if (i != real_d) VTtext += ` \\\\ `;
 	}
-	VTtext += `\\end{bmatrix}\\)`;
+	VTtext += ` \\end{bmatrix} \\)</strong>`;
 	VT.innerHTML = VTtext;
-	console.log(a);
 	
+	if (IsDiag(a)) VT.innerHTML += "<br> The matrix is diagonal";
+	else VT.innerHTML += "<br> The matrix is not diagonal";
 	
+	renderMathInElement(document.body);
 	
 }
 
