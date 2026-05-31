@@ -305,7 +305,7 @@
     "tags": ["diagonal", "symmetric", "diagonalizable", "normal"]  
   },
   {
-    "id": 92,
+    "id": 62,
     "nome": "Complex number \\(i+1\\)",
     "tags": ["diagonal", "symmetric", "diagonalizable", "invertible", "normal"]
   }
